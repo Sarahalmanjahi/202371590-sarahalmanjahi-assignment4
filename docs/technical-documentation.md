@@ -30,9 +30,15 @@ Technical Skills uses the CV and existing portfolio as sources. Certifications &
 
 The live status starts with a loading message. An empty response produces an empty-state message, a non-success HTTP status produces a retry message, and a rejected fetch or unreadable response produces the connection feedback. A missing description uses the Assignment 3 description for the portfolio repository and a generic fallback for other repositories. Unauthenticated requests are subject to GitHub limits. [GitHub REST repository endpoints](https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user)
 
+## Interactive project case studies
+
+Each project card presents a course and category label, overview, technology badges, and the existing screenshot. A native `details` element with a project-specific `summary` label expands inline. The browser handles keyboard input and expansion state. The case studies cover objectives, contributions, features, and documented engineering approaches. Each panel links to the same local image used in the card for full-size viewing.
+
+The disclosure styles reuse the theme surface, accent, and focus colors. Grid items align at the top so opening one panel leaves the other card at its natural height. The case studies require no additional JavaScript or dependencies.
+
 ## Project filtering and sorting
 
-Each card supplies a `data-category`, an ISO completion date in `data-date`, and a name in its heading. JavaFX Game is dated 2024-12-15 and Smart Queue Management System is dated 2025-11-30. Selecting a category updates the in-memory selection. Changing the sort leaves that selection intact.
+Each card supplies a `data-category`, an ISO completion date in `data-date`, and a name in its heading. Color-Match Star Game is dated 2024-12-15 and Smart Queue Management System is dated 2025-11-30. Selecting a category updates the in-memory selection. Changing the sort leaves that selection intact.
 
 `updateProjects()` sets the selected button's `aria-pressed` state, sorts the project records, hides nonmatching cards, counts visible cards, and updates the empty-state message. It runs once on load, then on filter and sort events. Chronological sorting compares ISO dates, placing undated cards last and using names to break equal-date ties. Name sorting uses `localeCompare()`. Cards already in the correct position stay in place.
 
@@ -65,6 +71,8 @@ For the first-stage redesign on 2026-11-26, Codex ran headless Chrome against a 
 Static checks for the profile and CV update verified the PDF signature, both CV link attributes, both GitHub link destinations in the markup, the footer accessible label, and local anchor and icon references. JavaScript syntax and `git diff --check` passed. Live GitHub access and browser checks for PDF opening, downloading, and appearance in both themes are pending.
 
 For the About and profile sections update on 2026-11-26, Codex checked in headless Chrome that the header links resolved, the timeline and card counts matched the markup, and the skills grid used one column at 320 px. No horizontal overflow was detected at 320, 390, 701, or 1280 px. The keyboard skip link, theme persistence, greeting, three project sort modes, filtering and count, contact validation, and mocked repository rendering passed regression checks. Visual review in both themes and student testing are pending.
+
+For the interactive case studies on 2026-11-26, Codex used headless Chrome to verify that both disclosures start closed, Enter opens a focused disclosure, and Space closes it. An expanded card fit at 320 and 1280 px. Checks also covered screenshot link targets in the markup, expansion state after filtering and sorting, the result count and a simulated empty category, all sort options, and theme persistence. GitHub was mocked during the regression checks. Student verification and a visual walkthrough remain pending.
 
 ### Inherited Assignment 3 results
 
