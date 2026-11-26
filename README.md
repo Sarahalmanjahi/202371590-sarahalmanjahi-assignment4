@@ -16,7 +16,7 @@ This internship portfolio presents Sarah Almanjahi’s software engineering educ
 | Feature | How to use it |
 |---|---|
 | Hero and navigation | Read Sarah’s personalized introduction and Summer 2027 internship availability. Use **View Projects** to jump to the project cards or the header links to move between sections. Keyboard users can tab to **Skip to content**. |
-| CV and profile links | Select **View CV** to open the PDF in a new tab. The **GitHub** link in the hero and the GitHub icon in the footer open the same profile. |
+| CV and profile links | The hero actions appear in this order: **View Projects**, **GitHub**, **LinkedIn**, and **View CV**. LinkedIn and the PDF open in a new tab. The GitHub icon in the footer opens the same profile as the hero link. |
 | About Me | Read Sarah’s introduction and local-time greeting alongside a Quick Facts card with her education, location, expected graduation, and interests. The card stacks below the introduction on narrow screens. |
 | Education & Experience | Follow the timeline for KFUPM education, Tuwaiq Club event management and campus tours in 2026, and KFUPM Winter Event volunteering in 2025. |
 | Technical Skills | Browse eight icon-led skill cards with individual tags, including separate Frontend Development and Backend Development categories. |
@@ -26,8 +26,6 @@ This internship portfolio presents Sarah Almanjahi’s software engineering educ
 | Light and dark mode | Select the sun or moon button in the header. The site defaults to light mode and saves your preference for the same site origin when browser storage is available. |
 | Contact | Use **Send Email** to open a blank email draft or **Copy Email** to copy the displayed address. **Send via Email** validates a name of at least two characters, a valid email address, and a message of at least ten characters, then opens a prefilled draft. Review and send it in your email app. |
 | Scroll navigation | The header highlights the current section. Use **Back to Top** in the footer to return to the top. Section reveals and hover transitions respect your system’s reduced-motion preference. |
-
-LinkedIn integration is pending the profile URL.
 
 ## Technologies and folder structure
 

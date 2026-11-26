@@ -28,7 +28,9 @@ Sarah replaced the hero introduction with “Turning ideas into practical digita
 
 The hero and footer use the existing HTTPS GitHub profile URL. Both links render the same decorative SVG mark in the current text color. Visible hero text and the footer link's accessible label describe the destination. The footer icon uses the existing button hover and focus styles.
 
-**View CV** points to `assets/cv/sarah-almanjahi-cv.pdf` using a relative path. The link requests a new tab with `target="_blank"` and `rel="noopener"`, and its accessible name announces the new tab. The hero actions and footer profile controls wrap at narrow widths. LinkedIn is pending a profile URL.
+The hero actions are **View Projects**, **GitHub**, **LinkedIn**, and **View CV**, in that order. The LinkedIn link uses the supplied profile path with the share tracking parameters removed. It opens in a new tab with `rel="noopener noreferrer"` and announces that behavior in its accessible name. The decorative LinkedIn SVG uses the same icon sizing and alignment as GitHub, with the blue-and-white brand mark. [LinkedIn brand guidelines for the in mark](https://brand.linkedin.com/in-logo)
+
+**View CV** points to `assets/cv/sarah-almanjahi-cv.pdf` using a relative path. The link requests a new tab with `target="_blank"` and `rel="noopener"`, and its accessible name announces the new tab. The hero actions and footer profile controls wrap at narrow widths.
 
 ## About, education, experience, skills, and credentials
 
@@ -66,7 +68,7 @@ The header theme button uses a stable **Dark mode** accessible label and reports
 
 ## Contact and validation
 
-The contact layout pairs the **Let's Connect** card with the **Send a Message** form. The cards stack on narrower screens. **Send Email** uses a direct `mailto:` link to the CV address. **Copy Email** uses the Clipboard API and announces success for three seconds through a polite status region. If clipboard access is unavailable, the status directs visitors to the selectable email address. LinkedIn is pending the profile URL.
+The contact layout pairs the **Let's Connect** card with the **Send a Message** form. The cards stack on narrower screens. **Send Email** uses a direct `mailto:` link to the CV address. **Copy Email** uses the Clipboard API and announces success for three seconds through a polite status region. If clipboard access is unavailable, the status directs visitors to the selectable email address.
 
 The submit control starts disabled and is enabled after the JavaScript listeners are installed. The form prevents default submission and trims and validates each field independently. Each inline error is referenced by its input’s `aria-describedby`. Invalid inputs carry `aria-invalid`, and submitting moves focus to the first invalid input. Editing an invalid field rechecks just that field. On valid submission, JavaScript percent-encodes a **Portfolio inquiry** subject and a body containing the visitor's name, email address, and message, then navigates to the composed `mailto:` URL. The fields remain available if the email handler cannot open. The visitor reviews and sends the message from the email application.
 
@@ -99,7 +101,7 @@ The implementation targets modern browsers with Fetch, async functions, CSS Grid
 
 ## Current limitations and future improvements
 
-- LinkedIn integration needs the public profile URL. Academic project case studies use the available screenshots and CV because the original project source files are unavailable.
+- Academic project case studies use the available screenshots and CV because the original project source files are unavailable.
 - The form validates locally and requires a configured email handler to open its draft. Clipboard copying depends on browser support and permissions.
 - The dashboard depends on live GitHub access and unauthenticated API limits. The language chart describes primary-language repository counts.
 - The production URL, formal HTML validation, fresh Lighthouse audits, and the manual browser and accessibility checks listed below remain pending. Use the official grading rubric to determine which verification and submission evidence is required.
@@ -153,6 +155,10 @@ On 2026-11-26, Codex reran the automated regression suite in headless Chrome and
 ### Contact redesign verification
 
 On 2026-11-26, headless Chrome passed form validation, focus and correction, mobile and tablet layout checks, and clipboard success, expiration, and permission fallback using a clipboard stub. A Node check captured the mailto URL and verified the recipient, subject, reserved-character and newline encoding, and preservation of field values. The browser suite also passed project, theme, scroll, and mocked GitHub regression checks. Actual system clipboard contents and email-client behavior remain pending manual verification.
+
+### Hero LinkedIn verification
+
+On 2026-11-26, headless Chrome verified the hero action order, LinkedIn link attributes, accessible name, matching GitHub button styles, and responsive layout in both themes at 320, 390, and 1280 px. The live LinkedIn profile could not be verified from the review environment.
 
 ### Inherited Assignment 3 results
 
