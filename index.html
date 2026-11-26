@@ -23,6 +23,7 @@
         <a href="#background">Education &amp; Experience</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#github-repositories">GitHub Dashboard</a>
         <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -300,9 +301,39 @@
 
     <!-- GitHub Repositories Section -->
     <section id="github-repositories">
-      <h2>GitHub Repositories</h2>
+      <h2>GitHub Dashboard</h2>
       <p id="github-repositories-status" role="status"></p>
-      <div id="github-repositories-list"></div>
+      <div id="github-dashboard" hidden>
+        <dl class="profile-grid github-metrics">
+          <div class="profile-card">
+            <dt>Public non-fork repositories</dt>
+            <dd id="github-repository-count"></dd>
+          </div>
+          <div class="profile-card">
+            <dt>Stars across non-fork repositories</dt>
+            <dd id="github-star-count"></dd>
+          </div>
+          <div class="profile-card">
+            <dt>Distinct primary languages</dt>
+            <dd id="github-language-count"></dd>
+          </div>
+        </dl>
+        <div class="profile-grid">
+          <div class="profile-card">
+            <h3>Primary language distribution</h3>
+            <p>These percentages show each primary language’s share of non-fork repositories with a reported language. They measure repositories, not lines of code.</p>
+            <p id="github-language-empty" hidden>No primary languages reported for non-fork repositories.</p>
+            <ul id="github-language-list" class="github-summary-list" role="list"></ul>
+          </div>
+          <div class="profile-card">
+            <h3>Recently updated repositories</h3>
+            <p>Up to four public repositories, including forks, by last update.</p>
+            <ul id="github-recent-list" class="github-summary-list"></ul>
+          </div>
+        </div>
+        <h3 class="github-repository-heading">All public repositories</h3>
+        <div id="github-repositories-list"></div>
+      </div>
     </section>
 
     <section id="certifications" aria-labelledby="certifications-title">

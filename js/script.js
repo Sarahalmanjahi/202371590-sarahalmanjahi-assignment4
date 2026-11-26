@@ -125,14 +125,84 @@ filterButtons.forEach((button) => {
 projectSort.addEventListener("change", updateProjects);
 updateProjects();
 
-/* GitHub Repositories */
+/* GitHub Dashboard and Repositories */
+function renderGitHubDashboard(repositories) {
+  const owned = repositories.filter((repository) => !repository.fork);
+  const languages = new Map();
+  let stars = 0;
+  let languageTotal = 0;
+
+  for (const repository of owned) {
+    stars += repository.stargazers_count;
+    const language = repository.language;
+    if (language) {
+      languages.set(language, (languages.get(language) || 0) + 1);
+      languageTotal++;
+    }
+  }
+
+  document.getElementById("github-repository-count").textContent = owned.length;
+  document.getElementById("github-star-count").textContent = stars;
+  document.getElementById("github-language-count").textContent = languages.size;
+  document.getElementById("github-language-empty").hidden = languages.size > 0;
+
+  const languageList = document.getElementById("github-language-list");
+  const rankedLanguages = [...languages].sort(([firstName, firstCount], [secondName, secondCount]) =>
+    secondCount - firstCount || firstName.localeCompare(secondName)
+  );
+
+  for (const [language, count] of rankedLanguages) {
+    const percentage = (count / languageTotal) * 100;
+    const item = document.createElement("li");
+    const label = document.createElement("span");
+    const bar = document.createElement("div");
+    const fill = document.createElement("div");
+
+    label.textContent = `${language} · ${count} ${count === 1 ? "repository" : "repositories"} · ${percentage.toFixed(1)}%`;
+    bar.className = "github-language-bar";
+    bar.setAttribute("aria-hidden", "true");
+    fill.className = "github-language-fill";
+    fill.style.width = `${percentage}%`;
+    bar.append(fill);
+    item.append(label, bar);
+    languageList.append(item);
+  }
+
+  const recentList = document.getElementById("github-recent-list");
+  for (const repository of repositories.slice(0, 4)) {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = repository.html_url;
+    link.textContent = repository.name;
+    item.append(link);
+    recentList.append(item);
+  }
+
+  document.getElementById("github-dashboard").hidden = false;
+}
+
+async function isGitHubRateLimited(response) {
+  if (response.status === 429) return true;
+  if (response.status !== 403) return false;
+  if (
+    response.headers.get("X-RateLimit-Remaining") === "0" ||
+    response.headers.has("Retry-After")
+  ) {
+    return true;
+  }
+
+  const error = await response.json().catch(() => null);
+  return /rate limit/i.test(error?.message || "");
+}
+
 async function loadGitHubRepositories() {
   const githubUsername = "Sarahalmanjahi";
   const status = document.getElementById("github-repositories-status");
   const list = document.getElementById("github-repositories-list");
   let nextPage =
-    `https://api.github.com/users/${githubUsername}/repos?per_page=100&sort=updated`;
+    `https://api.github.com/users/${githubUsername}/repos?per_page=100&sort=updated&direction=desc`;
   const cards = document.createDocumentFragment();
+  const publicRepositories = [];
 
   status.textContent = "Loading GitHub repositories…";
 
@@ -141,16 +211,19 @@ async function loadGitHubRepositories() {
       const response = await fetch(nextPage);
 
       if (!response.ok) {
-        status.textContent =
-          "GitHub couldn't load the repositories. Please try again later.";
+        status.textContent = await isGitHubRateLimited(response)
+          ? "GitHub’s API rate limit was reached. Please wait before reloading."
+          : "GitHub couldn't load the repositories. Please try again later.";
         return;
       }
 
       const repositories = await response.json();
+      if (!Array.isArray(repositories)) throw new Error("Unexpected GitHub response.");
+      publicRepositories.push(...repositories);
 
       for (const repository of repositories) {
         const card = document.createElement("article");
-        const heading = document.createElement("h3");
+        const heading = document.createElement("h4");
         const description = document.createElement("p");
         const link = document.createElement("a");
 
@@ -175,6 +248,7 @@ async function loadGitHubRepositories() {
 
     const count = cards.childElementCount;
     list.append(cards);
+    if (count) renderGitHubDashboard(publicRepositories);
     status.textContent = count
       ? `Loaded ${count} GitHub ${count === 1 ? "repository" : "repositories"}.`
       : "No public GitHub repositories found.";

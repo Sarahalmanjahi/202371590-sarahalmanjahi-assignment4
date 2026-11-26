@@ -454,6 +454,64 @@ button:hover,
   justify-self: start;
 }
 
+/* GitHub dashboard */
+.github-metrics {
+  margin: 0 0 1rem;
+}
+
+.github-metrics dt {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.github-metrics dd {
+  margin: 0.25rem 0 0;
+  color: var(--accent);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.github-summary-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding-inline-start: 1.25rem;
+}
+
+.github-summary-list:not(:empty),
+#github-language-empty,
+.github-repository-heading {
+  margin-top: 1rem;
+}
+
+#github-language-list {
+  padding: 0;
+  list-style: none;
+}
+
+.github-language-bar {
+  height: 0.5rem;
+  margin-top: 0.25rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--accent-soft);
+}
+
+.github-language-fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+.github-repository-heading {
+  margin-bottom: 0.75rem;
+}
+
+#github-repositories-list h4 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
 /* Contact and footer */
 #contact-form {
   display: grid;

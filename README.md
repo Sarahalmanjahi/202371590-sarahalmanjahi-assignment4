@@ -14,7 +14,7 @@ This static portfolio introduces Sarah Almanjahi, a Software Engineering student
 | Technical Skills | Browse seven skill categories sourced from the CV and portfolio projects. |
 | Certifications & Programs | Find the programs and credentials listed in the CV, along with their issuers. |
 | Projects | Browse Color-Match Star Game and Smart Queue Management System. Select **View Project Details** to read the case study and access the full-size screenshot. Use **All**, **Development**, or **Design**, then choose **Newest First**, **Oldest First**, or **Name A–Z**. The project count updates as you change either control. |
-| GitHub Repositories | Scroll to the repository section and use **View on GitHub** to open a public repository. The section displays loading, empty, and error feedback as applicable. |
+| GitHub Dashboard | See live non-fork repository, star, and primary-language counts, plus a language breakdown and up to four recently updated repositories. The full public repository list still includes forks and links to GitHub. |
 | Light and dark mode | Select the sun or moon button in the header. The site defaults to light mode and saves your preference for the same site origin when browser storage is available. |
 | Contact demo | Enter a name of at least two characters, an email address, and a message of at least ten characters. The form displays validation feedback and clears the fields after a successful check. It runs entirely in the browser and sends no messages. |
 
@@ -41,6 +41,8 @@ The site uses HTML, CSS, vanilla JavaScript, the GitHub REST API, and browser lo
 3. Connect to the internet to load the public GitHub repositories. No API credentials are required.
 
 ## Testing
+
+Open **GitHub Dashboard** with internet access. Check that the counts and recent links populate and that language bars have readable text labels in both themes. Language percentages use only non-fork repositories with a reported primary language. To check network feedback, use DevTools request blocking for `https://api.github.com/*` and reload, then remove the block and reload.
 
 In Projects, tab to each **View Project Details** control and press Enter or Space to toggle it. Check the screenshot links and try changing the filter and sort with a panel open. Repeat at a narrow width and in both themes.
 
