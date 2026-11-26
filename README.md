@@ -17,7 +17,7 @@ This static portfolio introduces Sarah Almanjahi, a Software Engineering student
 | GitHub Dashboard | See live non-fork repository, star, and primary-language counts, plus a language breakdown and up to four recently updated repositories. The full public repository list still includes forks and links to GitHub. |
 | Light and dark mode | Select the sun or moon button in the header. The site defaults to light mode and saves your preference for the same site origin when browser storage is available. |
 | Contact | Use **Email Sarah** to open your email app. **Check Message** runs a local demo with field-specific feedback for a name of at least two characters, a valid email address, and a message of at least ten characters. A valid check clears the demo fields without sending anything. |
-| Scroll navigation | The header highlights the current section. **Back to Top** appears after scrolling down. Section reveals and hover transitions respect your system’s reduced-motion preference. |
+| Scroll navigation | The header highlights the current section. Use **Back to Top** in the footer to return to the top. Section reveals and hover transitions respect your system’s reduced-motion preference. |
 
 Use **View CV** in the hero to open the PDF in a new tab or **Download CV** to save a copy. The GitHub icon in the footer opens the same profile as the hero link. LinkedIn is pending the profile URL.
 
@@ -45,7 +45,7 @@ The site uses HTML, CSS, vanilla JavaScript, the GitHub REST API, and browser lo
 
 Submit the contact demo empty, then try a malformed email and a short message. Check each field’s feedback, correct the entries, and verify the validation-only status. Try **Email Sarah**, keyboard focus, active section links, and **Back to Top**. Emulate reduced motion in DevTools and confirm the section reveals are suppressed.
 
-Open **GitHub Dashboard** with internet access. Check that the counts and recent links populate and that language bars have readable text labels in both themes. Language percentages use only non-fork repositories with a reported primary language. To check network feedback, use DevTools request blocking for `https://api.github.com/*` and reload, then remove the block and reload.
+Open **GitHub Dashboard** with internet access. Check that the counts and recent links populate and that language bars have readable text labels in both themes. Language percentages use only non-fork repositories with a reported primary language. To check recovery, block `https://api.github.com/*` in DevTools and reload, then remove the block and select **Retry GitHub**. A request that stalls for ten seconds also offers a retry.
 
 In Projects, tab to each **View Project Details** control and press Enter or Space to toggle it. Check the screenshot links and try changing the filter and sort with a panel open. Repeat at a narrow width and in both themes.
 

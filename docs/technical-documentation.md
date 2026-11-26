@@ -32,6 +32,8 @@ The dashboard counts non-fork repositories, sums their `stargazers_count` values
 
 A status region announces loading, a successful count, empty results, request failures, and rate limits. The dashboard is hidden until all pages load successfully and at least one repository is returned. When repositories have no reportable non-fork languages, the language card shows an explanatory message. HTTP 429 and rate-limited 403 responses receive a wait message with no automatic retry. A 403 is classified using the remaining-limit header, a retry header, or a rate-limit message in the response. Other HTTP failures and connection or response failures have separate feedback. The existing repository description fallbacks are preserved. [GitHub REST repository endpoints](https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user) [GitHub REST API rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api)
 
+Each API page has a ten-second AbortController deadline covering the fetch and response body. The timer is cleared when that request settles. Timeout, network, and ordinary HTTP failures expose a Retry GitHub button. Retry starts a fresh pagination sequence, and the dashboard is published only after successful pagination. Rate-limit feedback asks visitors to wait and keeps the retry control hidden.
+
 ## Interactive project case studies
 
 Each project card presents a course and category label, overview, technology badges, and the existing screenshot. A native `details` element with a project-specific `summary` label expands inline. The browser handles keyboard input and expansion state. The case studies cover objectives, contributions, features, and documented engineering approaches. Each panel links to the same local image used in the card for full-size viewing.
@@ -56,13 +58,13 @@ The submit control starts disabled and is enabled after the JavaScript listeners
 
 ## Scroll interactions
 
-A passive scroll listener schedules one navigation update per animation frame. The latest linked section above a reading line in the viewport receives `aria-current="location"`. The header is sticky on sufficiently wide and tall viewports. Back to Top is a native fragment link that becomes available after scrolling three quarters of a viewport and remains visible while it has keyboard focus.
+A passive scroll listener schedules one navigation update per animation frame. The latest linked section above a reading line in the viewport receives `aria-current="location"`. The header is sticky on sufficiently wide and tall viewports. Back to Top is an in-flow footer link to the page-start fragment. Its layout keeps it clear of form controls and makes it available without JavaScript.
 
 IntersectionObserver adds a one-time reveal class when a linked section enters the viewport. Content is visible by default, so it remains readable if scripts or the observer are unavailable. CSS applies the reveals and hover transitions only under `prefers-reduced-motion: no-preference`.
 
 ## Responsive design, performance, and accessibility
 
-The project and repository grids use two columns above 700 px and one column at smaller widths. The header places the site name above the navigation and theme toggle at 700 px or below. Fluid gutters and typography scale with the viewport. Hero actions, filters, and technology badges can wrap. Georgia and system UI fonts use the device's installed fonts. Both original project images have explicit intrinsic dimensions, lazy loading, asynchronous decoding, and a fixed 200 px display box with `object-fit: contain`. The JavaFX JPEG is 1280 × 744 at 38,726 bytes. The queue PNG is 638 × 1204 at 295,710 bytes.
+The project and repository grids use two columns above 700 px and one column at smaller widths. The header places the site name above the navigation and theme toggle at 700 px or below. Fluid gutters and typography scale with the viewport. Hero actions, filters, and technology badges can wrap. Georgia and system UI fonts use the device's installed fonts. Both project images have explicit intrinsic dimensions, lazy loading, asynchronous decoding, and a fixed 200 px display box with `object-fit: contain`. The JavaFX JPEG is 1280 × 744 at 38,726 bytes. The queue screenshot is 638 × 1204 at 25,242 bytes in WebP, down from 295,710 bytes in PNG. A full-size side-by-side comparison showed the small labels and ticket numbers remained readable. The card and full-size link share the WebP file.
 
 Semantic headings and landmarks, the existing skip link, native controls, visible focus, image alternatives, and live status messages support accessibility. The filter container has a group role and an accessible name. The theme icon is decorative because the button itself provides an accessible name. The accessible name of each repository link starts with its visible text and adds the repository name.
 
@@ -88,7 +90,7 @@ For the GitHub dashboard on 2026-11-26, headless Chrome verified totals, languag
 
 For the contact and accessibility update on 2026-11-26, headless Chrome verified the email link destination, per-field errors and correction, first-invalid focus, active section highlighting, Back to Top, reduced motion, and static visibility with the script blocked. Existing project, dashboard, keyboard skip-link, contact reset, and theme persistence checks passed. Calculated contrast for the reviewed text pairs was at least 5.73:1 in light mode and 7.48:1 in dark mode. The reviewed focus and control boundaries were at least 4.13:1 in light mode and 4.45:1 in dark mode. Manual assistive-technology and student checks remain pending.
 
-### Assignment 4 technical review
+### Assignment 4 technical review baseline
 
 On 2026-11-26, Codex inspected `index.html`, `css/styles.css`, and `js/script.js` and ran local headless Chrome and Edge tests. The automated checks covered layouts at 320, 390, 701, 768, 1024, and 1280 px; keyboard skip-link and disclosure behavior; theme persistence; project filtering, sorting, and a simulated empty category; field validation and first-invalid focus; active navigation, Back to Top, reduced motion, and static content visibility with JavaScript blocked. Both browsers passed the GitHub dashboard checks with mocked pagination, exact request counts, language and star calculations, recent ordering, empty and missing-language responses, rate limits, server errors, and connection failure. The local screenshot and PDF requests succeeded. Markup checks covered common ID references, heading count, and CV attributes. JavaScript syntax and the Git diff check passed.
 
@@ -101,6 +103,10 @@ On 2026-11-26, Codex inspected `index.html`, `css/styles.css`, and `js/script.js
 | Minor code cleanup is available. | Low | Source inspection found mixed JavaScript section-comment styles and no clearly unreachable code or duplicated API calls. Standardize headers, document the scroll reading line and language denominator, and keep the shared page logic. |
 
 The project has an always-visible wrapping navigation rather than a separate collapsible mobile menu. The official grading rubric was unavailable in the workspace. Live GitHub, CV new-tab viewing and download behavior, mail-client launch, Firefox, Safari, physical-device touch, screen readers, a formal HTML conformance check, and fresh Lighthouse audits remain unverified. Sampled text contrast minima were 5.73:1 in light mode and 7.48:1 in dark mode. Sampled focus and control boundary minima were 4.13:1 and 4.45:1, respectively. Student verification is pending. This review made documentation changes only.
+
+### Approved technical fixes
+
+On 2026-11-26, Codex reran the automated regression suite in headless Chrome and Edge. The former 320 × 568 px reproduction had zero overlap between the footer link and the email input. The link returned to the top and was available with JavaScript blocked. Chrome also held a mocked API request for the full ten-second timeout and verified the retry restored the dashboard and all cards without duplication. Both browsers passed pagination, rate-limit and network cases, the WebP asset response, and layout and interaction regressions. Targeted HTML checks passed for nesting, duplicate attributes and IDs, label and ARIA references, image attributes, internal links, and exact-case asset paths. JavaScript syntax and Git diff checks passed. A formal HTML validator, live GitHub and LinkedIn checks, manual cross-browser and device testing, student verification, and current Lighthouse audits remain pending.
 
 ### Inherited Assignment 3 results
 

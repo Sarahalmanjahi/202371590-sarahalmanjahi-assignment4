@@ -40,7 +40,7 @@ themeToggle.addEventListener("click", () => {
   }
 });
 
-// Dynamic Greeting
+/* Dynamic Greeting */
 const greeting = document.getElementById("greeting");
 const currentHour = new Date().getHours();
 
@@ -126,6 +126,10 @@ projectSort.addEventListener("change", updateProjects);
 updateProjects();
 
 /* GitHub Dashboard and Repositories */
+const githubStatus = document.getElementById("github-repositories-status");
+const githubRetry = document.getElementById("github-retry");
+const githubRequestTimeout = 10000;
+
 function renderGitHubDashboard(repositories) {
   const owned = repositories.filter((repository) => !repository.fork);
   const languages = new Map();
@@ -152,6 +156,7 @@ function renderGitHubDashboard(repositories) {
   );
 
   for (const [language, count] of rankedLanguages) {
+    // Use repositories with a reported primary language as the denominator.
     const percentage = (count / languageTotal) * 100;
     const item = document.createElement("li");
     const label = document.createElement("span");
@@ -191,34 +196,56 @@ async function isGitHubRateLimited(response) {
     return true;
   }
 
-  const error = await response.json().catch(() => null);
+  const error = await response.json().catch((reason) => {
+    if (reason.name === "AbortError") throw reason;
+    return null;
+  });
   return /rate limit/i.test(error?.message || "");
+}
+
+async function fetchGitHubPage(url) {
+  const controller = new AbortController();
+  // Keep the timer active through the response body read.
+  const timeout = setTimeout(() => controller.abort(), githubRequestTimeout);
+
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    if (!response.ok) {
+      const rateLimited = await isGitHubRateLimited(response);
+      return { rateLimited };
+    }
+
+    const repositories = await response.json();
+    if (!Array.isArray(repositories)) throw new Error("Unexpected GitHub response.");
+    return { repositories, pagination: response.headers.get("Link") || "" };
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 async function loadGitHubRepositories() {
   const githubUsername = "Sarahalmanjahi";
-  const status = document.getElementById("github-repositories-status");
   const list = document.getElementById("github-repositories-list");
   let nextPage =
     `https://api.github.com/users/${githubUsername}/repos?per_page=100&sort=updated&direction=desc`;
   const cards = document.createDocumentFragment();
   const publicRepositories = [];
 
-  status.textContent = "Loading GitHub repositories…";
+  githubRetry.hidden = true;
+  githubStatus.textContent = "Loading GitHub repositories…";
 
   try {
     while (nextPage) {
-      const response = await fetch(nextPage);
+      const { repositories, pagination, rateLimited } = await fetchGitHubPage(nextPage);
 
-      if (!response.ok) {
-        status.textContent = await isGitHubRateLimited(response)
+      if (!repositories) {
+        githubStatus.textContent = rateLimited
           ? "GitHub’s API rate limit was reached. Please wait before reloading."
           : "GitHub couldn't load the repositories. Please try again later.";
+        githubRetry.hidden = rateLimited;
         return;
       }
 
-      const repositories = await response.json();
-      if (!Array.isArray(repositories)) throw new Error("Unexpected GitHub response.");
       publicRepositories.push(...repositories);
 
       for (const repository of repositories) {
@@ -241,23 +268,28 @@ async function loadGitHubRepositories() {
       }
 
       // GitHub provides the next page URL in the Link response header.
-      const links = response.headers.get("Link") || "";
-      const nextLink = links.match(/<([^>]+)>;\s*rel="next"/);
+      const nextLink = pagination.match(/<([^>]+)>;\s*rel="next"/);
       nextPage = nextLink ? nextLink[1] : null;
     }
 
     const count = cards.childElementCount;
     list.append(cards);
     if (count) renderGitHubDashboard(publicRepositories);
-    status.textContent = count
+    githubStatus.textContent = count
       ? `Loaded ${count} GitHub ${count === 1 ? "repository" : "repositories"}.`
       : "No public GitHub repositories found.";
-  } catch {
-    status.textContent =
-      "Couldn't load GitHub repositories. Check your connection and try again.";
+  } catch (error) {
+    githubStatus.textContent = error.name === "AbortError"
+      ? "GitHub took too long to respond. Select Retry GitHub to try again."
+      : "Couldn't load GitHub repositories. Check your connection and try again.";
+    githubRetry.hidden = false;
   }
 }
 
+githubRetry.addEventListener("click", () => {
+  githubStatus.focus();
+  loadGitHubRepositories();
+});
 loadGitHubRepositories();
 
 /* Contact Form Validation */
@@ -335,7 +367,6 @@ contactForm.querySelector('button[type="submit"]').disabled = false;
 
 /* Scroll Navigation */
 const siteHeader = document.querySelector(".site-header");
-const backToTop = document.getElementById("back-to-top");
 const sectionLinks = [...siteHeader.querySelectorAll('nav a[href^="#"]')].map((link) => ({
   link,
   section: document.getElementById(link.hash.slice(1)),
@@ -347,6 +378,7 @@ function updateScrollNavigation() {
   scrollUpdatePending = false;
   const viewportHeight = window.innerHeight;
   const headerBottom = Math.max(0, siteHeader.getBoundingClientRect().bottom);
+  // Track the last section to cross a reading line below the visible header.
   const readingLine = headerBottom + (viewportHeight - headerBottom) * 0.2;
   let currentLink;
 
@@ -360,8 +392,6 @@ function updateScrollNavigation() {
     currentLink?.setAttribute("aria-current", "location");
     activeLink = currentLink;
   }
-
-  backToTop.hidden = window.scrollY < viewportHeight * 0.75 && backToTop !== document.activeElement;
 }
 
 function scheduleScrollNavigation() {
@@ -373,7 +403,6 @@ function scheduleScrollNavigation() {
 
 window.addEventListener("scroll", scheduleScrollNavigation, { passive: true });
 window.addEventListener("resize", scheduleScrollNavigation);
-backToTop.addEventListener("blur", scheduleScrollNavigation);
 updateScrollNavigation();
 
 if ("IntersectionObserver" in window) {

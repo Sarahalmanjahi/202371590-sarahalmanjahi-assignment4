@@ -456,6 +456,14 @@ button:hover,
 }
 
 /* GitHub dashboard */
+#github-retry {
+  margin-bottom: 0.75rem;
+}
+
+#github-retry[hidden] {
+  display: none;
+}
+
 .github-metrics {
   margin: 0 0 1rem;
 }
@@ -596,18 +604,11 @@ textarea {
 }
 
 .back-to-top {
-  position: fixed;
-  z-index: 1;
-  inset-inline-end: var(--gutter);
-  inset-block-end: 1rem;
-}
-
-.back-to-top[hidden] {
-  display: none;
+  margin-top: 0.75rem;
 }
 
 footer {
-  padding: 1.25rem var(--gutter) 4.75rem;
+  padding: 1.25rem var(--gutter);
   border-top: 1px solid var(--border);
   color: var(--muted);
   text-align: center;
