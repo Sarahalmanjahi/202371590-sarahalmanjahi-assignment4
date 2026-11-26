@@ -39,7 +39,7 @@ The site uses HTML, CSS, vanilla JavaScript, the GitHub REST API, and browser lo
 | `assets/images/` | JavaFX game JPEG and optimized queue prototype WebP |
 | `assets/cv/sarah-almanjahi-cv.pdf` | PDF used by both CV actions |
 | `docs/` | Technical documentation and AI usage report |
-| `.gitignore` | Ignore rules for the root evidence folders and the legacy Assignment 3 ZIP |
+| `.gitignore` | Keeps private evidence folders and assignment evidence ZIPs out of Git |
 
 ## Local setup
 

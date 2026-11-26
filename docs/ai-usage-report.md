@@ -54,6 +54,9 @@ Add an entry immediately after each AI-assisted task or modification. Use C01, C
 | C17 | OpenAI Codex (GPT-6) | 2026-11-26 | Add the supplied LinkedIn profile to the hero | `index.html`, `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Implemented A22, ran A23, and updated documentation. **Student contribution:** Supplied the LinkedIn URL. **AI verification:** Headless Chrome checked order, link attributes, matching styles, and layout in both themes. Live profile access and student verification remain pending. |
 | A22 | OpenAI Codex (GPT-6) | 2026-11-26 | LinkedIn hero markup generated in C17 | `index.html` | **AI output:** Added the LinkedIn SVG and new-tab link between GitHub and View CV, reusing existing hero styles. |
 | A23 | OpenAI Codex (GPT-6) | 2026-11-26 | Temporary LinkedIn browser check generated in C17 | `%TEMP%/portfolio-linkedin-check.cjs` (outside the repository) | **AI output:** Verified the link order, markup, matching computed styles, and layout in both themes at 320, 390, and 1280 px. |
+| C18 | OpenAI Codex (GPT-6) | 2026-11-26 | Audit the portfolio against the supplied rubric criteria | None | **AI output:** Reviewed the repository, source, documentation, and evidence references. Ran local headless Chrome regression checks with mocked GitHub data and clipboard behavior. Reported provisional marks for the visible criteria. |
+| C19 | OpenAI Codex (GPT-6) | 2026-11-26 | Resolve the approved portfolio audit findings | `.gitignore`, `index.html`, `css/styles.css`, `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Implemented A24, clarified historical verification notes, and updated documentation. **AI verification:** Headless Chrome, Node syntax, Git diff, and evidence ignore checks passed. Student verification of these follow-up changes is pending. |
+| A24 | OpenAI Codex (GPT-6) | 2026-11-26 | Portfolio follow-up changes generated in C19 | `.gitignore`, `index.html`, `css/styles.css` | **AI output:** Added the Quick Facts heading, corrected flex alignment and indentation, limited skill-card transitions to no-preference motion, and ignored matching Assignment 4 evidence ZIPs. Earlier student modifications are recorded separately. |
 
 ## Benefits & Challenges
 
@@ -83,7 +86,7 @@ ChatGPT provided feature suggestions and technical guidance. Sarah manually impl
 
 The final review reconciled the log against the available Assignment 4 conversation and repository history. Confirm any additional AI sessions or artifacts against the actual evidence archive before signing.
 
-Save complete, unedited AI conversations and original AI-generated artifacts **before making personal modifications**. Keep evidence private and reconcile it with the log before submission. The existing ignore rules cover the root `conversations/` and `artifacts/` folders and the Assignment 3 archive. Store any Assignment 4 evidence ZIP outside the repository and confirm its submission format with the assignment instructions.
+Save complete, unedited AI conversations and original AI-generated artifacts **before making personal modifications**. Keep evidence private and reconcile it with the log before submission. The ignore rules cover the root `conversations/` and `artifacts/` folders, the Assignment 3 archive, and matching Assignment 4 evidence ZIPs. Store any Assignment 4 evidence ZIP outside the repository and confirm its submission format with the assignment instructions.
 
 For AI-assisted commits, use a descriptive subject and credit the actual tool and model. The trailer for this work is `Assisted-by: OpenAI Codex (GPT-6)`.
 

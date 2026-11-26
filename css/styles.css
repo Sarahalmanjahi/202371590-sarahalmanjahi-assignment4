@@ -260,7 +260,7 @@ section h2 {
 
 .overview-item {
   display: flex;
-  flex-direction: center;
+  align-items: center;
   gap: 0.875rem;
 }
 
@@ -382,8 +382,6 @@ section h2 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   min-width: 0;
-  transition: border-color 200ms ease,
-              box-shadow 200ms ease;
 }
 
 .skill-card:hover {
@@ -830,8 +828,8 @@ footer {
   }
 
   .about-layout {
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .site-name {
@@ -862,6 +860,10 @@ footer {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .skill-card {
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+
   button,
   .button-link,
   .header-inner nav a,
