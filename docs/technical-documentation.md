@@ -20,7 +20,7 @@ Both CV links point to `assets/cv/sarah-almanjahi-cv.pdf` using a relative path.
 
 ## About, education, experience, skills, and credentials
 
-The About section uses the CV’s internship goal and examples from the portfolio; the local-time greeting still uses the existing script. The Education & Experience timeline uses a semantic list. Its dated entries use HTML `time` elements for the CV’s education range and career fair year. Tuwaiq Club and the other undated entries display their roles and organizations with no inferred dates.
+The About section uses the CV’s internship goal and examples from the portfolio. The local-time greeting uses the existing script. The Education & Experience timeline uses a semantic list and HTML `time` elements. The CV supplies the education range and career fair year. Sarah supplied the years for Tuwaiq Club and Campus Tours (2026) and the KFUPM Winter Event (2025).
 
 Technical Skills uses the CV and existing portfolio as sources. Certifications & Programs lists the CV’s three entries with their issuers. Both sections share a CSS Grid layout that fits as many cards as space allows and collapses to one column at narrow widths. The timeline rail, markers, cards, and metadata use the existing light and dark theme variables. Header anchors reach each new section directly. All new content is rendered in HTML.
 

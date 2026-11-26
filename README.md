@@ -10,7 +10,7 @@ This static portfolio introduces Sarah Almanjahi, a Software Engineering student
 |---|---|
 | Hero and navigation | Use **View Projects** to jump to the project cards, **GitHub** to open the profile, or the header links to move between sections. Keyboard users can tab to **Skip to content**. |
 | About Me | Read about Sarah’s engineering interests and internship goals, alongside a greeting based on your local time. |
-| Education & Experience | Follow the timeline for KFUPM education, Tuwaiq Club event management, and volunteering. |
+| Education & Experience | Follow the timeline for KFUPM education, Tuwaiq Club event management and campus tours in 2026, and KFUPM Winter Event volunteering in 2025. |
 | Technical Skills | Browse seven skill categories sourced from the CV and portfolio projects. |
 | Certifications & Programs | Find the programs and credentials listed in the CV, along with their issuers. |
 | Projects | Browse JavaFX Game and Smart Queue Management System. Use **All**, **Development**, or **Design**, then choose **Newest First**, **Oldest First**, or **Name A–Z**. The project count updates as you change either control. |
