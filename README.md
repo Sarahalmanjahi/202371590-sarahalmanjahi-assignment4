@@ -15,7 +15,7 @@ This internship portfolio presents Sarah Almanjahi’s software engineering educ
 
 | Feature | How to use it |
 |---|---|
-| Hero and navigation | Use **View Projects** to jump to the project cards, **GitHub** to open the profile, or the header links to move between sections. Keyboard users can tab to **Skip to content**. |
+| Hero and navigation | The hero shows Sarah’s availability for Summer 2027 internships. Use **View Projects** to jump to the project cards, **GitHub** to open the profile, or the header links to move between sections. Keyboard users can tab to **Skip to content**. |
 | CV and profile links | Select **View CV** to open the PDF in a new tab or **Download CV** to save it. The GitHub icon in the footer opens the same profile as the hero link. |
 | About Me | Read about Sarah’s engineering interests and internship goals, alongside a greeting based on your local time. |
 | Education & Experience | Follow the timeline for KFUPM education, Tuwaiq Club event management and campus tours in 2026, and KFUPM Winter Event volunteering in 2025. |

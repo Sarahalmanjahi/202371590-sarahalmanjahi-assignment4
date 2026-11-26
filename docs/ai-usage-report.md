@@ -48,6 +48,7 @@ Add an entry immediately after each AI-assisted task or modification. Use C01, C
 | C14 | OpenAI Codex (GPT-6) | 2026-11-26 | Redesign Contact Me with email copying and prefilled drafts | `index.html`, `css/styles.css`, `js/script.js`, `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Implemented A19, ran A20 and a Node draft check, and documented the behavior. **AI verification:** Chrome layout and validation, stubbed clipboard, and encoded draft checks passed. Actual clipboard and email-client behavior remain pending. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
 | A19 | OpenAI Codex (GPT-6) | 2026-11-26 | Contact redesign generated in C14 | `index.html`, `css/styles.css`, `js/script.js` | **AI output:** Redesigned the cards, added email actions and icons, and connected the validated form to a prefilled mailto draft. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
 | A20 | OpenAI Codex (GPT-6) | 2026-11-26 | Browser verification script adapted in C14 | `%TEMP%/portfolio-email-contact-check.cjs` (outside the repository) | **AI output:** Added checks for clipboard success, timed feedback, and permission denial, and adapted the valid-form assertion to check draft retention. **AI verification:** Headless Chrome passed with stubbed clipboard and mocked GitHub data. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
+| C15 | OpenAI Codex (GPT-6) | 2026-11-26 | Review and document the student-built internship availability indicator | `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI assistance:** Suggested the feature and design direction, then reviewed the source and updated documentation. **Student modifications:** Sarah wrote the HTML and CSS and chose the colors, positioning, and appearance. **Student verification:** Sarah confirmed the indicator displayed correctly in both themes and at different screen sizes. |
 
 ## Benefits & Challenges
 
@@ -59,7 +60,11 @@ Suggested topics for the student’s reflection include how one paginated respon
 
 ## Responsible Use & Modifications
 
-The log distinguishes AI-generated changes, student-supplied facts and decisions, and verification by Codex. The student supplied timeline years and confirmed that original academic project source files were unavailable. Git records the CV addition (`31bbd78`) and dashboard label changes (`548b436`). On 2026-11-26, the student confirmed she had yet to make personal Assignment 4 edits and intended to start. Personal testing remains pending confirmation. Record future confirmed edits with their purpose and confirmed tests with the environment and result.
+The log distinguishes AI-generated changes, student-supplied facts and decisions, and verification by Codex. The student supplied timeline years and confirmed that original academic project source files were unavailable. Git records the CV addition (`31bbd78`) and dashboard label changes (`548b436`). Personal testing beyond the confirmed indicator checks remains pending.
+
+### Student Modifications
+
+Sarah manually added the hero indicator **Open to Summer 2027 internships** in `index.html` and wrote its styling in `css/styles.css`. She chose its colors, positioning, and appearance. ChatGPT suggested the feature and design direction. Sarah reported that she verified the indicator in Light and Dark modes and at different screen sizes. The review of this contribution consisted of source inspection and documentation updates.
 
 The final review reconciled the log against the available Assignment 4 conversation and repository history. Confirm any additional AI sessions or artifacts against the actual evidence archive before signing.
 

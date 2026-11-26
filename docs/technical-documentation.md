@@ -20,6 +20,8 @@ The greeting uses the visitor’s local hour when the page loads. It changes fro
 
 The hero is the page's main heading and identifies Sarah and her KFUPM role. It links to the existing Projects section and to the GitHub account used by the repository loader. The action row wraps to accommodate the profile and CV links. The header uses a labeled navigation landmark and keeps all navigation links visible and able to wrap on small screens. The keyboard skip link moves focus to the main landmark. The theme control stays adjacent to the navigation and has a 44 px target at the default root font size.
 
+The hero displays **Open to Summer 2027 internships** as static text above the role line. The `.availability` rule uses inline flex and existing theme variables for the badge colors. The `.status-dot` is decorative and hidden from assistive technology, so the text conveys the full status without relying on color or JavaScript. Sarah reported verifying the indicator in both themes and at different screen sizes. Codex reviewed its source.
+
 ## Profile and CV links
 
 The hero and footer use the existing HTTPS GitHub profile URL. Both links render the same decorative SVG mark in the current text color. Visible hero text and the footer link's accessible label describe the destination. The footer icon uses the existing button hover and focus styles.
