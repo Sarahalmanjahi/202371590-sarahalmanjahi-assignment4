@@ -15,6 +15,7 @@ Add an entry immediately after each AI-assisted task or modification. Record the
 | ID | Tool (model) | Date | Purpose | Files affected | Student modifications and verification |
 |---|---|---|---|---|---|
 | A4-01 | OpenAI Codex (GPT-6) | 2026-11-26 | Review the inherited portfolio and prepare Assignment 4 documentation | `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Reviewed the inherited source, drafted the Assignment 4 README and this report, and updated the technical reference with the inherited implementation and historical checks. **AI verification:** JavaScript syntax, local documentation links, and documentation-only diff checked. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
+| A4-02 | OpenAI Codex (GPT-6) | 2026-11-26 | Audit the inherited portfolio and plan an internship-focused Assignment 4 redesign | `docs/ai-usage-report.md` | **AI output:** Reviewed HTML, CSS, JavaScript, and assets for design, functionality, accessibility, responsiveness, performance, and code reuse. Proposed phased improvements and file changes in the conversation. **AI verification:** Source inspection and JavaScript syntax check. Browser and live API testing remain pending. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
 
 ## Benefits & Challenges
 
