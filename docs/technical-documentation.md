@@ -88,6 +88,20 @@ For the GitHub dashboard on 2026-11-26, headless Chrome verified totals, languag
 
 For the contact and accessibility update on 2026-11-26, headless Chrome verified the email link destination, per-field errors and correction, first-invalid focus, active section highlighting, Back to Top, reduced motion, and static visibility with the script blocked. Existing project, dashboard, keyboard skip-link, contact reset, and theme persistence checks passed. Calculated contrast for the reviewed text pairs was at least 5.73:1 in light mode and 7.48:1 in dark mode. The reviewed focus and control boundaries were at least 4.13:1 in light mode and 4.45:1 in dark mode. Manual assistive-technology and student checks remain pending.
 
+### Assignment 4 technical review
+
+On 2026-11-26, Codex inspected `index.html`, `css/styles.css`, and `js/script.js` and ran local headless Chrome and Edge tests. The automated checks covered layouts at 320, 390, 701, 768, 1024, and 1280 px; keyboard skip-link and disclosure behavior; theme persistence; project filtering, sorting, and a simulated empty category; field validation and first-invalid focus; active navigation, Back to Top, reduced motion, and static content visibility with JavaScript blocked. Both browsers passed the GitHub dashboard checks with mocked pagination, exact request counts, language and star calculations, recent ordering, empty and missing-language responses, rate limits, server errors, and connection failure. The local screenshot and PDF requests succeeded. Markup checks covered common ID references, heading count, and CV attributes. JavaScript syntax and the Git diff check passed.
+
+| Finding | Severity | Evidence and proposed follow-up |
+|---|---|---|
+| Back to Top can overlap an input on narrow screens. | High | Headless Chrome measured about 97 by 38 px of overlap with the email field at 320 by 568 px in one scroll position. Move the control into a reserved area or suppress it while it would obscure form controls, then retest with touch and keyboard focus. |
+| LinkedIn is unavailable and live GitHub access is unverified. | Medium | Source inspection found no LinkedIn URL. Both GitHub profile links target the configured account. Attempts to reach the live profile and API from the review environment were unsuccessful. Supply the LinkedIn URL and verify both profiles and the live dashboard. |
+| A stalled GitHub request can leave loading visible. | Medium | Source inspection found no fetch deadline. Introduce a bounded request and verify timeout and retry behavior with a controlled delayed response. |
+| Queue screenshot is the main image optimization opportunity. | Low | The queue PNG is 295,710 bytes and the game JPEG is 38,726 bytes. Both already declare dimensions, lazy loading, and async decoding. Compare a WebP preview for size and text legibility before replacing the PNG. The 514,386-byte CV is fetched on demand. |
+| Minor code cleanup is available. | Low | Source inspection found mixed JavaScript section-comment styles and no clearly unreachable code or duplicated API calls. Standardize headers, document the scroll reading line and language denominator, and keep the shared page logic. |
+
+The project has an always-visible wrapping navigation rather than a separate collapsible mobile menu. The official grading rubric was unavailable in the workspace. Live GitHub, CV new-tab viewing and download behavior, mail-client launch, Firefox, Safari, physical-device touch, screen readers, a formal HTML conformance check, and fresh Lighthouse audits remain unverified. Sampled text contrast minima were 5.73:1 in light mode and 7.48:1 in dark mode. Sampled focus and control boundary minima were 4.13:1 and 4.45:1, respectively. Student verification is pending. This review made documentation changes only.
+
 ### Inherited Assignment 3 results
 
 The following checks were performed by Codex on 2026-11-21 during Assignment 3.
