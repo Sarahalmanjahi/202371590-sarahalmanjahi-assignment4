@@ -15,7 +15,7 @@ This static portfolio introduces Sarah Almanjahi, a Software Engineering student
 | Light and dark mode | Select the sun or moon button in the header. The site defaults to light mode and saves your preference for the same site origin when browser storage is available. |
 | Contact demo | Enter a name of at least two characters, an email address, and a message of at least ten characters. The form displays validation feedback and clears the fields after a successful check. It runs entirely in the browser and sends no messages. |
 
-The hero action row is ready for LinkedIn and CV links in a later stage.
+Use **View CV** in the hero to open the PDF in a new tab or **Download CV** to save a copy. The GitHub icon in the footer opens the same profile as the hero link. LinkedIn is pending the profile URL.
 
 ## Technologies and folder structure
 
@@ -27,6 +27,7 @@ The site uses HTML, CSS, vanilla JavaScript, the GitHub REST API, and browser lo
 | `css/styles.css` | Themes, responsive layout, and interaction styles |
 | `js/script.js` | Theme, greeting, project controls, repository fetching, and form validation |
 | `assets/images/` | Project images |
+| `assets/cv/sarah-almanjahi-cv.pdf` | PDF used by both CV actions |
 | `docs/` | Technical documentation and AI usage report |
 | `.gitignore` | Ignore rules for the root evidence folders and the legacy Assignment 3 ZIP |
 
