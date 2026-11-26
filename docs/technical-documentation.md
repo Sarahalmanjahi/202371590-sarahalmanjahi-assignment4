@@ -22,17 +22,21 @@ The hero is the page's main heading and identifies Sarah and her KFUPM role. It 
 
 The hero displays **Open to Summer 2027 internships** as static text above the role line. The `.availability` rule uses inline flex and existing theme variables for the badge colors. The `.status-dot` is decorative and hidden from assistive technology, so the text conveys the full status without relying on color or JavaScript. Sarah reported verifying the indicator in both themes and at different screen sizes. Codex reviewed its source.
 
+Sarah replaced the hero introduction with “Turning ideas into practical digital solutions through software engineering, creative thinking, and continuous learning.” The existing `.hero-intro` paragraph retains its fluid typography and theme-aware text color.
+
 ## Profile and CV links
 
 The hero and footer use the existing HTTPS GitHub profile URL. Both links render the same decorative SVG mark in the current text color. Visible hero text and the footer link's accessible label describe the destination. The footer icon uses the existing button hover and focus styles.
 
-Both CV links point to `assets/cv/sarah-almanjahi-cv.pdf` using a relative path. **View CV** opens a new tab with `target="_blank"` and `rel="noopener"`, and its accessible name announces the new tab. **Download CV** uses the native `download` attribute. The hero actions and footer profile controls wrap at narrow widths. LinkedIn is pending a profile URL.
+**View CV** points to `assets/cv/sarah-almanjahi-cv.pdf` using a relative path. The link requests a new tab with `target="_blank"` and `rel="noopener"`, and its accessible name announces the new tab. The hero actions and footer profile controls wrap at narrow widths. LinkedIn is pending a profile URL.
 
 ## About, education, experience, skills, and credentials
 
-The About section uses the CV’s internship goal and examples from the portfolio. The local-time greeting uses the existing script. The Education & Experience timeline uses a semantic list and HTML `time` elements. The CV supplies the education range and career fair year. Sarah supplied the years for Tuwaiq Club and Campus Tours (2026) and the KFUPM Winter Event (2025).
+The About section groups the introduction and existing JavaScript greeting in `.about-content` and the Quick Facts card in `.about-overview`. CSS Grid uses `1.4fr 1fr` columns above 700 px and one column at 700 px or below. The card shows Software Engineering at KFUPM, Saudi Arabia, expected graduation in 2028, and interests in Software Development and Cybersecurity. Flexbox rows pair text with decorative inline SVGs that use `currentColor`. The surface, border, accent, and text use existing theme variables.
 
-Technical Skills uses the CV and existing portfolio as sources. Certifications & Programs lists the CV’s three entries with their issuers. Both sections share a CSS Grid layout that fits as many cards as space allows and collapses to one column at narrow widths. The timeline rail, markers, cards, and metadata use the existing light and dark theme variables. Header anchors reach each new section directly. All new content is rendered in HTML.
+The Education & Experience timeline uses a semantic list and HTML `time` elements. The CV supplies the education range and career fair year. Sarah supplied the years for Tuwaiq Club and Campus Tours (2026) and the KFUPM Winter Event (2025). Certifications & Programs lists the CV’s three entries with their issuers.
+
+Technical Skills uses eight static HTML cards: Programming Languages, Frontend Development, Backend Development, Databases, Software Engineering, Networking & Cybersecurity, AI & Data, and Tools & Technologies. Each has a decorative inline SVG, a text heading, and wrapping skill tags. The CSS grid uses four columns above 1000 px, two from 501 to 1000 px, and one at 500 px or below. Icons, tags, and cards use the existing theme variables. Skill tags describe the portfolio owner's skills. The site itself still uses HTML, CSS, and vanilla JavaScript.
 
 ## GitHub API integration
 
@@ -102,13 +106,23 @@ The implementation targets modern browsers with Fetch, async functions, CSS Grid
 
 ## Verification record
 
-### Assignment 4
+### Student verification and source review
+
+Sarah confirmed that she personally tested the website and all five manual changes. Her earlier confirmation specifically covered the availability indicator in both themes and at different screen sizes. She did not supply browser versions, device models, or individual test measurements. The following automated results apply to earlier revisions.
+
+Codex compared the five implementation commits with the current source. The commits affect `index.html` and `css/styles.css`; the JavaScript file was unchanged. Source inspection confirmed that **View CV** still points to the tracked PDF with new-tab and opener-protection attributes.
+
+- The Quick Facts card has no visible heading. It currently relies on the four individual labels to describe its contents.
+- `.overview-item` specifies `flex-direction: center`, which browsers ignore. If the intent is vertical alignment within each row, the corresponding property is `align-items`.
+- The skill-card hover transition is outside the reduced-motion media query. If the reduced-motion preference should suppress it, move the transition into that query or override it in a reduced-motion rule.
+
+### Earlier Assignment 4 automated checks
 
 On 2026-11-26, Codex reviewed the source and ran a JavaScript syntax check and documentation checks. Assignment 4 browser walkthroughs, live API verification, Lighthouse, cross-browser testing, and assistive-technology checks are pending. Student verification is pending confirmation.
 
 For the first-stage redesign on 2026-11-26, Codex ran headless Chrome against a local HTTP server with a mocked GitHub response. Checks passed for the hero links in the rendered markup, keyboard skip-link activation and focus transfer, no horizontal overflow and the expected grid at 320 px and 1280 px, theme switching and dark-theme persistence across navigation, the greeting, mocked repository rendering, all three sort modes, a category filter and count, and invalid and successful contact submissions. The syntax and diff checks also passed. Live GitHub, visual and cross-browser walkthroughs, assistive technology, and new Lighthouse results are pending.
 
-Static checks for the profile and CV update verified the PDF signature, both CV link attributes, both GitHub link destinations in the markup, the footer accessible label, and local anchor and icon references. JavaScript syntax and `git diff --check` passed. Live GitHub access and browser checks for PDF opening, downloading, and appearance in both themes are pending.
+Static checks for the profile and CV update verified the PDF signature, CV link markup, both GitHub link destinations, the footer accessible label, and local anchor and icon references. JavaScript syntax and `git diff --check` passed.
 
 For the About and profile sections update on 2026-11-26, Codex checked in headless Chrome that the header links resolved, the timeline and card counts matched the markup, and the skills grid used one column at 320 px. No horizontal overflow was detected at 320, 390, 701, or 1280 px. The keyboard skip link, theme persistence, greeting, three project sort modes, filtering and count, contact validation, and mocked repository rendering passed regression checks. Visual review in both themes and student testing are pending.
 
@@ -130,7 +144,7 @@ On 2026-11-26, Codex inspected `index.html`, `css/styles.css`, and `js/script.js
 | Queue screenshot is the main image optimization opportunity. | Low | The queue PNG is 295,710 bytes and the game JPEG is 38,726 bytes. Both already declare dimensions, lazy loading, and async decoding. Compare a WebP preview for size and text legibility before replacing the PNG. The 514,386-byte CV is fetched on demand. |
 | Minor code cleanup is available. | Low | Source inspection found mixed JavaScript section-comment styles and no clearly unreachable code or duplicated API calls. Standardize headers, document the scroll reading line and language denominator, and keep the shared page logic. |
 
-The project has an always-visible wrapping navigation rather than a separate collapsible mobile menu. The official grading rubric was unavailable in the workspace. Live GitHub, CV new-tab viewing and download behavior, mail-client launch, Firefox, Safari, physical-device touch, screen readers, a formal HTML conformance check, and fresh Lighthouse audits remain unverified. Sampled text contrast minima were 5.73:1 in light mode and 7.48:1 in dark mode. Sampled focus and control boundary minima were 4.13:1 and 4.45:1, respectively. Student verification is pending. This review made documentation changes only.
+The project has an always-visible wrapping navigation. The official grading rubric was unavailable in the workspace. The baseline review did not verify live GitHub, CV new-tab behavior, mail-client launch, Firefox, Safari, physical-device touch, screen readers, formal HTML conformance, or fresh Lighthouse results. Sampled text contrast minima were 5.73:1 in light mode and 7.48:1 in dark mode. Sampled focus and control boundary minima were 4.13:1 and 4.45:1, respectively. This review made documentation changes only.
 
 ### Approved technical fixes
 

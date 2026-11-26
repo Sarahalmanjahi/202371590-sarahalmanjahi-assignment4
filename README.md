@@ -15,11 +15,11 @@ This internship portfolio presents Sarah Almanjahi’s software engineering educ
 
 | Feature | How to use it |
 |---|---|
-| Hero and navigation | The hero shows Sarah’s availability for Summer 2027 internships. Use **View Projects** to jump to the project cards, **GitHub** to open the profile, or the header links to move between sections. Keyboard users can tab to **Skip to content**. |
-| CV and profile links | Select **View CV** to open the PDF in a new tab or **Download CV** to save it. The GitHub icon in the footer opens the same profile as the hero link. |
-| About Me | Read about Sarah’s engineering interests and internship goals, alongside a greeting based on your local time. |
+| Hero and navigation | Read Sarah’s personalized introduction and Summer 2027 internship availability. Use **View Projects** to jump to the project cards or the header links to move between sections. Keyboard users can tab to **Skip to content**. |
+| CV and profile links | Select **View CV** to open the PDF in a new tab. The **GitHub** link in the hero and the GitHub icon in the footer open the same profile. |
+| About Me | Read Sarah’s introduction and local-time greeting alongside a Quick Facts card with her education, location, expected graduation, and interests. The card stacks below the introduction on narrow screens. |
 | Education & Experience | Follow the timeline for KFUPM education, Tuwaiq Club event management and campus tours in 2026, and KFUPM Winter Event volunteering in 2025. |
-| Technical Skills | Browse seven skill categories sourced from the CV and portfolio projects. |
+| Technical Skills | Browse eight icon-led skill cards with individual tags, including separate Frontend Development and Backend Development categories. |
 | Certifications & Programs | Find the programs and credentials listed in the CV, along with their issuers. |
 | Projects | Browse Color-Match Star Game and Smart Queue Management System. Select **View Project Details** to read the case study and access the full-size screenshot. Use **All**, **Development**, or **Design**, then choose **Newest First**, **Oldest First**, or **Name A–Z**. The project count updates as you change either control. |
 | GitHub Dashboard | Check **Public Projects**, **GitHub Stars**, and **Primary Languages** for public non-fork repositories. **Language Breakdown** shows repository shares among non-forks with a reported primary language. **Recent Projects** lists up to four recently updated public repositories, including forks. Open any recent link or use **View on GitHub** in the full list. Select **Retry GitHub** if it appears after a failed request. |
@@ -53,7 +53,7 @@ The site uses HTML, CSS, vanilla JavaScript, the GitHub REST API, and browser lo
 
 ## Testing
 
-Codex ran automated regression checks in headless Chrome and Edge at mobile, tablet, and desktop widths with mocked GitHub data. The checks covered theme persistence, keyboard use, project controls, dashboard totals and errors, contact validation, and scroll navigation. Live GitHub, manual CV actions, Firefox and Safari, physical-device and assistive-technology testing, and fresh Assignment 4 Lighthouse audits remain pending.
+Sarah confirmed that she personally tested the website and her five modifications, and previously confirmed checking the internship indicator in both themes and at different screen sizes. Earlier Codex regression checks ran in headless Chrome and Edge with mocked GitHub data. Specific student test environments and feature-by-feature results were not supplied. Fresh Lighthouse and formal HTML validation remain unrecorded.
 
 Submit the contact form empty, then try a malformed email and a short message. Correct the fields and verify that **Send via Email** prepares a draft with the right recipient, subject, name, email, and message. Check **Send Email** and **Copy Email**, including the temporary confirmation. Try keyboard focus, active section links, and **Back to Top**. Emulate reduced motion in DevTools and confirm the section reveals are suppressed.
 
@@ -65,11 +65,11 @@ For a browser walkthrough, start with Tab and activate **Skip to content**. Use 
 
 ## Deployment
 
-The live Assignment 4 URL is pending. The site can be served from a static host by publishing the project root with its relative asset paths intact. After deployment, verify the public page, CV actions, and live GitHub dashboard, then add the URL here.
+The live Assignment 4 URL is pending. The site can be served from a static host by publishing the project root with its relative asset paths intact. After deployment, verify the public page, **View CV**, and the live GitHub dashboard, then add the URL here.
 
 ## AI usage
 
-OpenAI Codex (GPT-6) assisted with planning, redesign and implementation, documentation, and automated verification. The [AI Usage Report](docs/ai-usage-report.md) records the conversations and artifacts. Student modifications and personal testing are pending confirmation.
+OpenAI Codex (GPT-6) assisted with planning, implementation, documentation, and automated verification. Sarah manually updated the hero, About Me, skills cards, and CV controls, and confirmed personally testing the website and her changes. The [AI Usage Report](docs/ai-usage-report.md#student-modifications) separates the student work from AI assistance.
 
 ## Author
 
