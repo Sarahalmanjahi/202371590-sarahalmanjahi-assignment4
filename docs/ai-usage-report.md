@@ -6,7 +6,7 @@
 
 ## Tools Used & Use Cases
 
-OpenAI Codex (GPT-6) reviewed the portfolio developed in Assignments 2 and 3 and drafted the Assignment 4 documentation and implemented the first-stage visual redesign. This log begins with the Assignment 4 review on 2026-11-26. The previous AI report is preserved in Git at the Assignment 4 baseline commit `28ea7d4`.
+OpenAI Codex (GPT-6) assisted with source review, implementation planning, HTML/CSS/JavaScript changes, debugging, and documentation. It also used local Node.js, Git, and headless Chrome and Edge for deterministic checks, and generated a WebP comparison and browser verification scripts. These supporting tools did not generate AI responses. This log begins with the Assignment 4 review on 2026-11-26. The prior report is preserved at baseline commit `28ea7d4`.
 
 ## AI Usage Log
 
@@ -41,22 +41,28 @@ Add an entry immediately after each AI-assisted task or modification. Use C01, C
 | A14 | OpenAI Codex (GPT-6) | 2026-11-26 | Application fixes generated in C11 | `index.html`, `css/styles.css`, `js/script.js` | **AI output:** Moved Back to Top into the footer, added an AbortController deadline and retry, standardized section comments, and updated the screenshot references. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
 | A15 | OpenAI Codex (GPT-6) | 2026-11-26 | Optimized queue screenshot generated in C11 | `assets/images/queue-system.webp` | **AI output:** Re-encoded the queue PNG as a full-size WebP, reducing it from 295,710 to 25,242 bytes. **AI verification:** Side-by-side visual comparison kept small labels readable. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
 | A16 | OpenAI Codex (GPT-6) | 2026-11-26 | Temporary comparison and browser scripts generated in C11 | `%TEMP%/portfolio-webp-compare.cjs`, `%TEMP%/portfolio-technical-fixes-check.cjs` | **AI output:** Generated the WebP comparison and adapted the regression script for non-overlap, local assets, timeout and retry. **AI verification:** Final browser runs passed with mocked GitHub responses. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
+| A17 | OpenAI Codex (GPT-6) | 2026-11-26 | Initial Assignment 4 documentation drafts generated in C01 | `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` (snapshot in `f1384a6`) | **AI output:** Initial Assignment 4 README, technical documentation, and AI report. Added this artifact reference during the final reconciliation. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
+| C12 | OpenAI Codex (GPT-6) | 2026-11-26 | Reconcile the final documentation and AI usage record with the current portfolio | `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Compared current markup, styles, script, tracked assets, and Git history with the three documents, updated A18, and recorded review limits. **AI verification:** Node syntax, local documentation links, sequential log IDs, and documentation-only diff checked. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
+| A18 | OpenAI Codex (GPT-6) | 2026-11-26 | Final documentation updates generated in C12 | `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Finalized the user guide and technical descriptions, reconciled the AI log, and retained the declaration as a dated draft. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
+| C13 | OpenAI Codex (GPT-6) | 2026-11-26 | Record the student’s clarification about personal edits | `docs/ai-usage-report.md` | **AI output:** Updated the student modification status based on her confirmation. **Student modifications:** None as of this conversation. **Student verification:** Pending confirmation. |
 
 ## Benefits & Challenges
 
-Codex used the source to reconcile the user guide and technical description and identify which verification results belong to Assignment 3. Headless Chrome verified key flows using mocked GitHub data. Live API behavior and deployment still need verification. Student assessment of benefits and challenges is pending.
+AI assistance helped trace existing interactions before making changes, exercise GitHub failure paths with repeatable fixtures, and identify a mobile overlap that a width-only check missed. The project relied on the CV and existing screenshots where academic source files were unavailable. Mock responses verified dashboard behavior under controlled conditions. Live API behavior, deployment, and manual compatibility checks remain pending. The student’s own assessment of the benefits and challenges is pending confirmation.
 
 ## Learning Outcomes
 
-Topics for the student's reflection include tracing features from HTML controls through JavaScript to visible feedback, identifying which features depend on browser storage or the network, and distinguishing source review from runtime verification. Personal learning outcomes are pending student confirmation.
+Suggested topics for the student’s reflection include how one paginated response powers two dashboard views, how AbortController bounds a request, how native disclosures and field-level messages support keyboard use, and how automated checks differ from live and manual verification. The student’s personal learning outcomes are pending confirmation.
 
 ## Responsible Use & Modifications
 
-The log identifies AI-generated changes separately from the student's own edits and checks. Student modifications and personal testing for Assignment 4 are pending confirmation. Update the log when the student reports what she changed, why she changed it, and how she verified it.
+The log distinguishes AI-generated changes, student-supplied facts and decisions, and verification by Codex. The student supplied timeline years and confirmed that original academic project source files were unavailable. Git records the CV addition (`31bbd78`) and dashboard label changes (`548b436`). On 2026-11-26, the student confirmed she had yet to make personal Assignment 4 edits and intended to start. Personal testing remains pending confirmation. Record future confirmed edits with their purpose and confirmed tests with the environment and result.
+
+The final review reconciled the log against the available Assignment 4 conversation and repository history. Confirm any additional AI sessions or artifacts against the actual evidence archive before signing.
 
 Save complete, unedited AI conversations and original AI-generated artifacts **before making personal modifications**. Keep evidence private and reconcile it with the log before submission. The existing ignore rules cover the root `conversations/` and `artifacts/` folders and the Assignment 3 archive. Store any Assignment 4 evidence ZIP outside the repository and confirm its submission format with the assignment instructions.
 
-For AI-assisted commits, use a descriptive subject and credit the actual tool and model. Suggested subject for this update is `Prepare Assignment 4 portfolio documentation`, with the trailer `Assisted-by: OpenAI Codex (GPT-6)`.
+For AI-assisted commits, use a descriptive subject and credit the actual tool and model. The trailer for this work is `Assisted-by: OpenAI Codex (GPT-6)`.
 
 ## AI Usage Declaration (Draft)
 
@@ -64,5 +70,5 @@ I declare that this report and the attached evidence document all of my AI use i
 
 **Full Name:** Sarah Almanjahi<br>
 **Student ID:** 202371590<br>
-**Date:** Pending student completion<br>
+**Date:** 2026-11-26 (draft date, pending student confirmation)<br>
 **Signature:** Pending student completion

@@ -2,11 +2,19 @@
 
 **Sarah Almanjahi · 202371590 · SWE 363 – Web Engineering**
 
-Assignment 4 begins with the static portfolio developed in Assignments 2 and 3. This document covers the current implementation, including the first-stage hero, navigation, and visual redesign.
+Assignment 4 extends the static portfolio developed in Assignments 2 and 3. This document describes the website as it exists in the repository, the decisions made during implementation, and the available verification evidence.
 
 ## Architecture
 
-The portfolio is a static page. HTML defines the landmark sections, controls, and project cards. One stylesheet controls presentation and a deferred JavaScript file wires up the document after parsing. GitHub is the only external data source. Form input stays in the browser. The site uses HTML, CSS, and vanilla JavaScript with no build pipeline or backend. The greeting uses the visitor's local hour on page load, changing from morning to afternoon at noon and from afternoon to evening at 18:00.
+The portfolio is a static page with no build pipeline or backend. GitHub is the only external data source and form input stays in the browser.
+
+| File | Responsibility |
+|---|---|
+| `index.html` | Semantic landmarks, section links, profile content, CV actions, project metadata and disclosures, dashboard containers, contact controls, and footer. |
+| `css/styles.css` | Theme variables, fluid type and spacing, Flexbox and Grid layouts, breakpoints, focus and validation styles, and reduced-motion media rules. |
+| `js/script.js` | Deferred script that restores the theme, renders the greeting, updates project filters and ordering, fetches and renders GitHub data, validates contact fields, and manages scroll interactions. |
+
+The greeting uses the visitor’s local hour when the page loads. It changes from morning to afternoon at noon and from afternoon to evening at 18:00.
 
 ## Hero and navigation
 
@@ -28,7 +36,7 @@ Technical Skills uses the CV and existing portfolio as sources. Certifications &
 
 `loadGitHubRepositories()` uses `fetch()` and `async`/`await` to request the public repositories for `Sarahalmanjahi` with `per_page=100&sort=updated&direction=desc`. GitHub's `Link` header supplies the next page URL. The dashboard and repository cards share this single pagination sequence. Requests send no credentials. Repository cards use `textContent` and the API's `html_url`, and a document fragment batches rendering after all pages are retrieved.
 
-The dashboard counts non-fork repositories, sums their `stargazers_count` values, and counts distinct non-empty `language` values. Each language's repository count is divided by the number of non-fork repositories with a reported language. Text percentages are rounded to one decimal place, and decorative bars use the calculated proportion. The percentages describe each repository's primary language. The recent list takes the first four repositories in API update order, including forks. The full card list continues to show all returned public repositories.
+**Public Projects**, **GitHub Stars**, and **Primary Languages** show the count of public non-fork repositories, the sum of their `stargazers_count` values, and the count of distinct non-empty `language` values. For **Language Breakdown**, each language’s repository count is divided by the number of non-fork repositories with a reported language. Text percentages are rounded to one decimal place, and decorative bars use the calculated proportion. The percentages describe each repository's primary language. **Recent Projects** takes the first four repositories in API update order, including forks. The full card list shows all returned public repositories.
 
 A status region announces loading, a successful count, empty results, request failures, and rate limits. The dashboard is hidden until all pages load successfully and at least one repository is returned. When repositories have no reportable non-fork languages, the language card shows an explanatory message. HTTP 429 and rate-limited 403 responses receive a wait message with no automatic retry. A 403 is classified using the remaining-limit header, a retry header, or a rate-limit message in the response. Other HTTP failures and connection or response failures have separate feedback. The existing repository description fallbacks are preserved. [GitHub REST repository endpoints](https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user) [GitHub REST API rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api)
 
@@ -71,6 +79,24 @@ Semantic headings and landmarks, the existing skip link, native controls, visibl
 ## Compatibility and deployment
 
 The implementation targets modern browsers with Fetch, async functions, CSS Grid, and CSS custom properties. Theme switching works on the current page when storage is unavailable. Repository loading requires network access to GitHub. Serve the repository root over HTTP for local development or deploy it to a static host with the same folder structure. The Assignment 4 deployment URL is pending confirmation.
+
+## Technical challenges and implemented solutions
+
+| Challenge | Implemented solution |
+|---|---|
+| Combining category filters, sort order, and expandable details | One update function applies both controls to existing card nodes. Disclosure state stays with each card through filtering and reordering. |
+| Showing GitHub statistics and repository cards without duplicate requests | A single pagination sequence supplies both views. Cards are assembled in a document fragment, and the dashboard is shown only after successful pagination. |
+| A stalled or rate-limited GitHub request | A per-page timeout and manual retry cover recoverable failures. Rate-limit feedback asks the visitor to wait. |
+| Back to Top overlapping the contact form on a narrow viewport | The control now sits in the footer’s normal document flow and uses native fragment navigation. |
+| Keeping small screenshot labels legible while reducing transfer size | The queue screenshot retains its original dimensions in a smaller WebP, verified with a side-by-side visual comparison. |
+| Preserving content when motion is reduced or scripts are unavailable | Native links and disclosures are available in HTML. Reveal animations start from visible content and honor the reduced-motion setting. The contact demo stays disabled if its validation script is unavailable. |
+
+## Current limitations and future improvements
+
+- LinkedIn integration needs the public profile URL. Academic project case studies use the available screenshots and CV because the original project source files are unavailable.
+- The form validates locally. Email is the current means to send a message.
+- The dashboard depends on live GitHub access and unauthenticated API limits. The language chart describes primary-language repository counts.
+- The production URL, formal HTML validation, fresh Lighthouse audits, and the manual browser and accessibility checks listed below remain pending. Use the official grading rubric to determine which verification and submission evidence is required.
 
 ## Verification record
 
@@ -123,7 +149,7 @@ The following checks were performed by Codex on 2026-11-21 during Assignment 3.
 | Layout and images | Headless Chrome checked the one-column project grid at 390 px, two-column grid at 1280 px, and that both images loaded. No uncaught JavaScript exceptions were observed in the tested flows. |
 | Evidence protection | Git recognized both private evidence directories and the required ZIP filename as ignored. |
 
-### Lighthouse results
+### Inherited Assignment 3 Lighthouse results
 
 Lighthouse 13.6.0 audited the local HTTP site on 2026-11-21 after the repository link labels were corrected. These are automated lab measurements from one run per device preset.
 
