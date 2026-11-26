@@ -264,44 +264,129 @@ loadGitHubRepositories();
 const contactForm = document.getElementById("contact-form");
 const formFeedback = document.getElementById("form-feedback");
 
-function getContactError() {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const contactFields = [
+  {
+    input: contactForm.elements.name,
+    error: document.getElementById("name-error"),
+    validate(value) {
+      if (!value) return "Enter your name.";
+      return value.length < 2 ? "Enter at least 2 characters for your name." : "";
+    },
+  },
+  {
+    input: contactForm.elements.email,
+    error: document.getElementById("email-error"),
+    validate(value) {
+      if (!value) return "Enter your email address.";
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+        ? ""
+        : "Enter an email address in the format name@example.com.";
+    },
+  },
+  {
+    input: contactForm.elements.message,
+    error: document.getElementById("message-error"),
+    validate(value) {
+      if (!value) return "Enter a message.";
+      return value.length < 10 ? "Enter at least 10 characters in your message." : "";
+    },
+  },
+];
 
-  if (!name) return "Please enter your name.";
-  if (!email) return "Please enter your email address.";
-  if (!message) return "Please enter a message.";
-  if (!emailPattern.test(email)) return "Please enter a valid email address.";
-  if (name.length < 2) return "Please enter a name with at least 2 characters.";
-  if (message.length < 10) return "Please enter a message with at least 10 characters.";
-
-  return "";
+function validateContactField({ input, error, validate }) {
+  const message = validate(input.value.trim());
+  error.textContent = message;
+  error.hidden = !message;
+  if (message) {
+    input.setAttribute("aria-invalid", "true");
+  } else {
+    input.removeAttribute("aria-invalid");
+  }
+  return !message;
 }
 
-if (contactForm && formFeedback) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-    const error = getContactError();
-    if (error) {
-      formFeedback.textContent = error;
-      formFeedback.className = "error";
-      return;
+  const invalidFields = contactFields.filter((field) => !validateContactField(field));
+  if (invalidFields.length) {
+    formFeedback.textContent = "Check the highlighted fields.";
+    formFeedback.className = "error";
+    invalidFields[0].input.focus();
+    return;
+  }
+
+  contactForm.reset();
+  formFeedback.textContent = "Validation passed. Use the email link to send a message.";
+  formFeedback.className = "success";
+});
+
+contactForm.addEventListener("input", (event) => {
+  const field = contactFields.find(({ input }) => input === event.target);
+  if (field?.input.hasAttribute("aria-invalid")) validateContactField(field);
+
+  if (!contactForm.querySelector('[aria-invalid="true"]')) {
+    formFeedback.textContent = "";
+    formFeedback.className = "";
+  }
+});
+
+contactForm.querySelector('button[type="submit"]').disabled = false;
+
+/* Scroll Navigation */
+const siteHeader = document.querySelector(".site-header");
+const backToTop = document.getElementById("back-to-top");
+const sectionLinks = [...siteHeader.querySelectorAll('nav a[href^="#"]')].map((link) => ({
+  link,
+  section: document.getElementById(link.hash.slice(1)),
+}));
+let activeLink;
+let scrollUpdatePending = false;
+
+function updateScrollNavigation() {
+  scrollUpdatePending = false;
+  const viewportHeight = window.innerHeight;
+  const headerBottom = Math.max(0, siteHeader.getBoundingClientRect().bottom);
+  const readingLine = headerBottom + (viewportHeight - headerBottom) * 0.2;
+  let currentLink;
+
+  for (const { link, section } of sectionLinks) {
+    if (section.getBoundingClientRect().top > readingLine) break;
+    currentLink = link;
+  }
+
+  if (activeLink !== currentLink) {
+    activeLink?.removeAttribute("aria-current");
+    currentLink?.setAttribute("aria-current", "location");
+    activeLink = currentLink;
+  }
+
+  backToTop.hidden = window.scrollY < viewportHeight * 0.75 && backToTop !== document.activeElement;
+}
+
+function scheduleScrollNavigation() {
+  if (!scrollUpdatePending) {
+    scrollUpdatePending = true;
+    requestAnimationFrame(updateScrollNavigation);
+  }
+}
+
+window.addEventListener("scroll", scheduleScrollNavigation, { passive: true });
+window.addEventListener("resize", scheduleScrollNavigation);
+backToTop.addEventListener("blur", scheduleScrollNavigation);
+updateScrollNavigation();
+
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        if (matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+          entry.target.classList.add("section-reveal");
+        }
+        revealObserver.unobserve(entry.target);
+      }
     }
-
-    formFeedback.textContent =
-      "Form validated successfully! This demo does not send messages.";
-    formFeedback.className = "success";
-    contactForm.reset();
   });
 
-  contactForm.addEventListener("input", () => {
-    const error = formFeedback.className === "error" ? getContactError() : "";
-    if (formFeedback.textContent !== error) {
-      formFeedback.textContent = error;
-      formFeedback.className = error ? "error" : "";
-    }
-  });
+  for (const { section } of sectionLinks) revealObserver.observe(section);
 }

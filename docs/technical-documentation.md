@@ -48,15 +48,23 @@ Each card supplies a `data-category`, an ISO completion date in `data-date`, and
 
 The header theme button uses a stable **Dark mode** accessible label and reports its state through `aria-pressed`. The sun or moon icon and tooltip indicate the next action. JavaScript reads the `portfolio-theme` key at startup and applies `data-theme` to the document root. Missing or invalid preferences resolve to light. Clicks apply and save the new preference. Storage errors leave the current page interactive. CSS variables define neutral surfaces, rose accents, text, borders, focus indicators, and feedback colors for both palettes. The `color-scheme` property matches native controls to the selected theme.
 
-## Contact validation
+## Contact and validation
 
-The form prevents default submission. Validation trims all fields, checks for missing values, checks email syntax, and requires at least two characters for the name and ten for the message. A failed submission shows the first applicable error. Editing revalidates active errors and clears stale confirmation when a new draft begins. A successful submission resets the form and displays a message that the demo sends nothing.
+The contact layout pairs a direct `mailto:` link using the CV address with a local form demo. The two cards stack on narrower screens. LinkedIn is pending the profile URL.
+
+The submit control starts disabled and is enabled after the JavaScript listeners are installed. The form prevents default submission and trims and validates each field independently. Each inline error is referenced by its input’s `aria-describedby`. Invalid inputs carry `aria-invalid`, and submitting moves focus to the first invalid input. Editing an invalid field rechecks just that field. A valid submission resets the demo and reports validation through a polite status region. Sending a message uses the separate email link.
+
+## Scroll interactions
+
+A passive scroll listener schedules one navigation update per animation frame. The latest linked section above a reading line in the viewport receives `aria-current="location"`. The header is sticky on sufficiently wide and tall viewports. Back to Top is a native fragment link that becomes available after scrolling three quarters of a viewport and remains visible while it has keyboard focus.
+
+IntersectionObserver adds a one-time reveal class when a linked section enters the viewport. Content is visible by default, so it remains readable if scripts or the observer are unavailable. CSS applies the reveals and hover transitions only under `prefers-reduced-motion: no-preference`.
 
 ## Responsive design, performance, and accessibility
 
 The project and repository grids use two columns above 700 px and one column at smaller widths. The header places the site name above the navigation and theme toggle at 700 px or below. Fluid gutters and typography scale with the viewport. Hero actions, filters, and technology badges can wrap. Georgia and system UI fonts use the device's installed fonts. Both original project images have explicit intrinsic dimensions, lazy loading, asynchronous decoding, and a fixed 200 px display box with `object-fit: contain`. The JavaFX JPEG is 1280 × 744 at 38,726 bytes. The queue PNG is 638 × 1204 at 295,710 bytes.
 
-Semantic headings and landmarks, native controls, visible focus, image alternatives, and live status messages support accessibility. This stage uses no animated effects. The filter container has a group role and an accessible name. The theme icon is decorative because the button itself provides an accessible name. The accessible name of each repository link starts with its visible text and adds the repository name.
+Semantic headings and landmarks, the existing skip link, native controls, visible focus, image alternatives, and live status messages support accessibility. The filter container has a group role and an accessible name. The theme icon is decorative because the button itself provides an accessible name. The accessible name of each repository link starts with its visible text and adds the repository name.
 
 ## Compatibility and deployment
 
@@ -77,6 +85,8 @@ For the About and profile sections update on 2026-11-26, Codex checked in headle
 For the interactive case studies on 2026-11-26, Codex used headless Chrome to verify that both disclosures start closed, Enter opens a focused disclosure, and Space closes it. An expanded card fit at 320 and 1280 px. Checks also covered screenshot link targets in the markup, expansion state after filtering and sorting, the result count and a simulated empty category, all sort options, and theme persistence. GitHub was mocked during the regression checks. Student verification and a visual walkthrough remain pending.
 
 For the GitHub dashboard on 2026-11-26, headless Chrome verified totals, language percentages, recent order, and the full card list using two mocked API pages and exactly two requests per load. Additional cases covered zero repositories, no reported languages, HTTP 429, primary and secondary rate-limit HTTP 403 responses, HTTP 500, and a network failure. Layout, theme persistence, project controls, and contact validation passed regression checks. Live GitHub access and student verification remain pending.
+
+For the contact and accessibility update on 2026-11-26, headless Chrome verified the email link destination, per-field errors and correction, first-invalid focus, active section highlighting, Back to Top, reduced motion, and static visibility with the script blocked. Existing project, dashboard, keyboard skip-link, contact reset, and theme persistence checks passed. Calculated contrast for the reviewed text pairs was at least 5.73:1 in light mode and 7.48:1 in dark mode. The reviewed focus and control boundaries were at least 4.13:1 in light mode and 4.45:1 in dark mode. Manual assistive-technology and student checks remain pending.
 
 ### Inherited Assignment 3 results
 

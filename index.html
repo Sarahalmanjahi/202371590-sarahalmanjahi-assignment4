@@ -11,7 +11,7 @@
   <script src="js/script.js" defer></script>
 </head>
 
-<body>
+<body id="page-top" tabindex="-1">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header class="site-header">
@@ -361,21 +361,36 @@
     <section id="contact">
       <h2>Contact Me</h2>
 
-      <form id="contact-form" novalidate>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+      <div class="contact-layout">
+        <div class="profile-card contact-direct">
+          <h3>Get in touch</h3>
+          <p>For internships, project questions, or collaborations, reach out by email.</p>
+          <a class="button-link" href="mailto:Sarahalmanjahi@gmail.com">Email Sarah</a>
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-
-        <button type="submit">Send Message</button>
-
-        <!-- Validation Feedback -->
-        <p id="form-feedback" role="status" aria-live="polite"></p>
-      </form>
+        <form class="profile-card" id="contact-form" aria-labelledby="contact-form-title" aria-describedby="contact-form-note" novalidate>
+          <h3 id="contact-form-title">Contact form demo</h3>
+          <p id="contact-form-note">This form checks your entries in your browser. To send a message, use the email link.</p>
+          <noscript><p>Enable JavaScript to use the form demo.</p></noscript>
+          <div class="contact-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error" required>
+            <p id="name-error" class="field-error" hidden></p>
+          </div>
+          <div class="contact-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-error" required>
+            <p id="email-error" class="field-error" hidden></p>
+          </div>
+          <div class="contact-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" aria-describedby="message-error" required></textarea>
+            <p id="message-error" class="field-error" hidden></p>
+          </div>
+          <button type="submit" disabled>Check Message</button>
+          <p id="form-feedback" role="status"></p>
+        </form>
+      </div>
     </section>
   </main>
 
@@ -392,6 +407,7 @@
       </a>
     </nav>
     <p>&copy; 2026 Sarah Almanjahi</p>
+    <a class="button-link back-to-top" id="back-to-top" href="#page-top" hidden>Back to Top</a>
   </footer>
 </body>
 </html>
