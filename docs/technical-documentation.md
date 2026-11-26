@@ -2,11 +2,15 @@
 
 **Sarah Almanjahi · 202371590 · SWE 363 – Web Engineering**
 
-Assignment 4 begins with the static portfolio developed in Assignments 2 and 3. This document describes the inherited implementation and will be updated as technical changes are completed.
+Assignment 4 begins with the static portfolio developed in Assignments 2 and 3. This document covers the current implementation, including the first-stage hero, navigation, and visual redesign.
 
 ## Architecture
 
 The portfolio is a static page. HTML defines the landmark sections, controls, and project cards. One stylesheet controls presentation and a deferred JavaScript file wires up the document after parsing. GitHub is the only external data source. Form input stays in the browser. The site uses HTML, CSS, and vanilla JavaScript with no build pipeline or backend. The greeting uses the visitor's local hour on page load, changing from morning to afternoon at noon and from afternoon to evening at 18:00.
+
+## Hero and navigation
+
+The hero is the page's main heading and identifies Sarah and her KFUPM role. It links to the existing Projects section and to the GitHub account used by the repository loader. The wrapping action row can accommodate LinkedIn and CV links when their destinations are supplied. The header uses a labeled navigation landmark and keeps all navigation links visible and able to wrap on small screens. The keyboard skip link moves focus to the main landmark. The theme control stays adjacent to the navigation and has a 44 px target at the default root font size.
 
 ## GitHub API integration
 
@@ -22,7 +26,7 @@ Each card supplies a `data-category`, an ISO completion date in `data-date`, and
 
 ## Theme state
 
-The header theme button uses a stable **Dark mode** accessible label and reports its state through `aria-pressed`. The sun or moon icon and tooltip indicate the next action. JavaScript reads the `portfolio-theme` key at startup and applies `data-theme` to the document root. Missing or invalid preferences resolve to light. Clicks apply and save the new preference. Storage errors leave the current page interactive. CSS variables define both palettes and `color-scheme` matches native controls to the selected theme.
+The header theme button uses a stable **Dark mode** accessible label and reports its state through `aria-pressed`. The sun or moon icon and tooltip indicate the next action. JavaScript reads the `portfolio-theme` key at startup and applies `data-theme` to the document root. Missing or invalid preferences resolve to light. Clicks apply and save the new preference. Storage errors leave the current page interactive. CSS variables define neutral surfaces, rose accents, text, borders, focus indicators, and feedback colors for both palettes. The `color-scheme` property matches native controls to the selected theme.
 
 ## Contact validation
 
@@ -30,9 +34,9 @@ The form prevents default submission. Validation trims all fields, checks for mi
 
 ## Responsive design, performance, and accessibility
 
-The project and repository grids use two columns above 700 px and one column at smaller widths. The header navigation stacks on narrow screens and controls and technology badges can wrap. Both original project images have explicit intrinsic dimensions, lazy loading, asynchronous decoding, and a fixed 200 px display box with `object-fit: contain`. The JavaFX JPEG is 1280 × 744 at 38,726 bytes. The queue PNG is 638 × 1204 at 295,710 bytes.
+The project and repository grids use two columns above 700 px and one column at smaller widths. The header places the site name above the navigation and theme toggle at 700 px or below. Fluid gutters and typography scale with the viewport. Hero actions, filters, and technology badges can wrap. Georgia and system UI fonts use the device's installed fonts. Both original project images have explicit intrinsic dimensions, lazy loading, asynchronous decoding, and a fixed 200 px display box with `object-fit: contain`. The JavaFX JPEG is 1280 × 744 at 38,726 bytes. The queue PNG is 638 × 1204 at 295,710 bytes.
 
-Semantic headings and landmarks, native controls, visible focus, image alternatives, live status messages, and reduced-motion styling support accessibility. The filter container has a group role and an accessible name. The theme icon is decorative because the button itself provides an accessible name. The accessible name of each repository link starts with its visible text and adds the repository name.
+Semantic headings and landmarks, native controls, visible focus, image alternatives, and live status messages support accessibility. This stage uses no animated effects. The filter container has a group role and an accessible name. The theme icon is decorative because the button itself provides an accessible name. The accessible name of each repository link starts with its visible text and adds the repository name.
 
 ## Compatibility and deployment
 
@@ -43,6 +47,8 @@ The implementation targets modern browsers with Fetch, async functions, CSS Grid
 ### Assignment 4
 
 On 2026-11-26, Codex reviewed the source and ran a JavaScript syntax check and documentation checks. Assignment 4 browser walkthroughs, live API verification, Lighthouse, cross-browser testing, and assistive-technology checks are pending. Student verification is pending confirmation.
+
+For the first-stage redesign on 2026-11-26, Codex ran headless Chrome against a local HTTP server with a mocked GitHub response. Checks passed for the hero links in the rendered markup, keyboard skip-link activation and focus transfer, no horizontal overflow and the expected grid at 320 px and 1280 px, theme switching and dark-theme persistence across navigation, the greeting, mocked repository rendering, all three sort modes, a category filter and count, and invalid and successful contact submissions. The syntax and diff checks also passed. Live GitHub, visual and cross-browser walkthroughs, assistive technology, and new Lighthouse results are pending.
 
 ### Inherited Assignment 3 results
 
