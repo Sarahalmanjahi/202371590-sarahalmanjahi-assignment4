@@ -18,6 +18,12 @@ The hero and footer use the existing HTTPS GitHub profile URL. Both links render
 
 Both CV links point to `assets/cv/sarah-almanjahi-cv.pdf` using a relative path. **View CV** opens a new tab with `target="_blank"` and `rel="noopener"`, and its accessible name announces the new tab. **Download CV** uses the native `download` attribute. The hero actions and footer profile controls wrap at narrow widths. LinkedIn is pending a profile URL.
 
+## About, education, experience, skills, and credentials
+
+The About section uses the CV’s internship goal and examples from the portfolio; the local-time greeting still uses the existing script. The Education & Experience timeline uses a semantic list. Its dated entries use HTML `time` elements for the CV’s education range and career fair year. Tuwaiq Club and the other undated entries display their roles and organizations with no inferred dates.
+
+Technical Skills uses the CV and existing portfolio as sources. Certifications & Programs lists the CV’s three entries with their issuers. Both sections share a CSS Grid layout that fits as many cards as space allows and collapses to one column at narrow widths. The timeline rail, markers, cards, and metadata use the existing light and dark theme variables. Header anchors reach each new section directly. All new content is rendered in HTML.
+
 ## GitHub API integration
 
 `loadGitHubRepositories()` uses `fetch()` and `async`/`await` to request the public repositories for `Sarahalmanjahi` with `per_page=100&sort=updated`. GitHub's `Link` header supplies the next page URL. The request sends no credentials. Repository cards use `textContent` and the API's `html_url`, and a document fragment batches rendering after all pages are retrieved.
@@ -57,6 +63,8 @@ On 2026-11-26, Codex reviewed the source and ran a JavaScript syntax check and d
 For the first-stage redesign on 2026-11-26, Codex ran headless Chrome against a local HTTP server with a mocked GitHub response. Checks passed for the hero links in the rendered markup, keyboard skip-link activation and focus transfer, no horizontal overflow and the expected grid at 320 px and 1280 px, theme switching and dark-theme persistence across navigation, the greeting, mocked repository rendering, all three sort modes, a category filter and count, and invalid and successful contact submissions. The syntax and diff checks also passed. Live GitHub, visual and cross-browser walkthroughs, assistive technology, and new Lighthouse results are pending.
 
 Static checks for the profile and CV update verified the PDF signature, both CV link attributes, both GitHub link destinations in the markup, the footer accessible label, and local anchor and icon references. JavaScript syntax and `git diff --check` passed. Live GitHub access and browser checks for PDF opening, downloading, and appearance in both themes are pending.
+
+For the About and profile sections update on 2026-11-26, Codex checked in headless Chrome that the header links resolved, the timeline and card counts matched the markup, and the skills grid used one column at 320 px. No horizontal overflow was detected at 320, 390, 701, or 1280 px. The keyboard skip link, theme persistence, greeting, three project sort modes, filtering and count, contact validation, and mocked repository rendering passed regression checks. Visual review in both themes and student testing are pending.
 
 ### Inherited Assignment 3 results
 

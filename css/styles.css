@@ -210,6 +210,68 @@ section h2 {
   color: var(--muted);
 }
 
+/* Education, experience, skills, and certifications */
+.timeline {
+  display: grid;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0 0 0 1.25rem;
+  border-inline-start: 2px solid var(--border);
+  list-style: none;
+}
+
+.timeline li,
+.profile-card {
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow-wrap: anywhere;
+}
+
+.timeline li {
+  position: relative;
+}
+
+.timeline li::before {
+  position: absolute;
+  inset-block-start: 1.35rem;
+  inset-inline-start: calc(-1.25rem - 6px);
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--page-bg);
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+}
+
+.timeline p,
+.profile-card p {
+  color: var(--muted);
+}
+
+.timeline h3 + p,
+.profile-card h3 + p {
+  margin-top: 0.35rem;
+}
+
+.timeline p + p,
+.profile-card p + p {
+  margin-top: 0.5rem;
+}
+
+.timeline .entry-detail,
+.profile-card .entry-detail {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* Controls */
 button,
 .button-link,

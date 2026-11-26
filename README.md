@@ -9,7 +9,10 @@ This static portfolio introduces Sarah Almanjahi, a Software Engineering student
 | Feature | How to use it |
 |---|---|
 | Hero and navigation | Use **View Projects** to jump to the project cards, **GitHub** to open the profile, or the header links to move between sections. Keyboard users can tab to **Skip to content**. |
-| About Me | Read the introduction and a greeting based on your local time. |
+| About Me | Read about Sarah’s engineering interests and internship goals, alongside a greeting based on your local time. |
+| Education & Experience | Follow the timeline for KFUPM education, Tuwaiq Club event management, and volunteering. |
+| Technical Skills | Browse seven skill categories sourced from the CV and portfolio projects. |
+| Certifications & Programs | Find the programs and credentials listed in the CV, along with their issuers. |
 | Projects | Browse JavaFX Game and Smart Queue Management System. Use **All**, **Development**, or **Design**, then choose **Newest First**, **Oldest First**, or **Name A–Z**. The project count updates as you change either control. |
 | GitHub Repositories | Scroll to the repository section and use **View on GitHub** to open a public repository. The section displays loading, empty, and error feedback as applicable. |
 | Light and dark mode | Select the sun or moon button in the header. The site defaults to light mode and saves your preference for the same site origin when browser storage is available. |
@@ -39,7 +42,7 @@ The site uses HTML, CSS, vanilla JavaScript, the GitHub REST API, and browser lo
 
 ## Testing
 
-For a browser walkthrough, start with Tab and activate **Skip to content**. Check the hero and header links, wrapping on narrow screens, and both themes. Reload to check theme persistence, then check the greeting, project filters and sorts, GitHub repository loading, and contact form feedback. Record the browser, viewport, date, and results. See the [verification record](docs/technical-documentation.md#verification-record) for completed checks and pending coverage.
+For a browser walkthrough, start with Tab and activate **Skip to content**. Use the header links to reach the timeline, skills, and certifications. Compare the entries with the CV and check that the cards fit at narrow widths in both themes. Reload to check theme persistence, then check the greeting, CV actions, project filters and sorts, GitHub repository loading, and contact form feedback. Record the browser, viewport, date, and results. See the [verification record](docs/technical-documentation.md#verification-record) for completed checks and pending coverage.
 
 ## Deployment
 
