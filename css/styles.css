@@ -165,6 +165,28 @@ main > .hero {
   padding-block: clamp(3rem, 9vw, 7rem);
 }
 
+/* Internship Availability Indicator */
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--success-bg);
+  color: var(--success-text);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  background: var(--success-text);
+  border-radius: 50%;
+}
+
 .hero-role {
   color: var(--accent);
   font-size: clamp(0.9375rem, 2vw, 1.125rem);
