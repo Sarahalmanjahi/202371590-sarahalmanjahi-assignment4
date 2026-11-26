@@ -529,8 +529,42 @@ button:hover,
   gap: 1rem;
 }
 
-.contact-direct .button-link {
+.contact-direct .contact-email {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-top: 1rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.contact-email span {
+  min-width: 0;
+}
+
+.contact-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+}
+
+.contact-email .contact-icon {
+  color: var(--accent);
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#copy-email[hidden] {
+  display: none;
+}
+
+#copy-email-status:not(:empty) {
+  margin-top: 0.625rem;
 }
 
 #contact-form {
@@ -578,6 +612,7 @@ textarea {
 
 #contact-form button {
   justify-self: start;
+  gap: 0.5rem;
   margin-top: 0.25rem;
 }
 

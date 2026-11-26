@@ -60,9 +60,9 @@ The header theme button uses a stable **Dark mode** accessible label and reports
 
 ## Contact and validation
 
-The contact layout pairs a direct `mailto:` link using the CV address with a local form demo. The two cards stack on narrower screens. LinkedIn is pending the profile URL.
+The contact layout pairs the **Let's Connect** card with the **Send a Message** form. The cards stack on narrower screens. **Send Email** uses a direct `mailto:` link to the CV address. **Copy Email** uses the Clipboard API and announces success for three seconds through a polite status region. If clipboard access is unavailable, the status directs visitors to the selectable email address. LinkedIn is pending the profile URL.
 
-The submit control starts disabled and is enabled after the JavaScript listeners are installed. The form prevents default submission and trims and validates each field independently. Each inline error is referenced by its input’s `aria-describedby`. Invalid inputs carry `aria-invalid`, and submitting moves focus to the first invalid input. Editing an invalid field rechecks just that field. A valid submission resets the demo and reports validation through a polite status region. Sending a message uses the separate email link.
+The submit control starts disabled and is enabled after the JavaScript listeners are installed. The form prevents default submission and trims and validates each field independently. Each inline error is referenced by its input’s `aria-describedby`. Invalid inputs carry `aria-invalid`, and submitting moves focus to the first invalid input. Editing an invalid field rechecks just that field. On valid submission, JavaScript percent-encodes a **Portfolio inquiry** subject and a body containing the visitor's name, email address, and message, then navigates to the composed `mailto:` URL. The fields remain available if the email handler cannot open. The visitor reviews and sends the message from the email application.
 
 ## Scroll interactions
 
@@ -89,12 +89,12 @@ The implementation targets modern browsers with Fetch, async functions, CSS Grid
 | A stalled or rate-limited GitHub request | A per-page timeout and manual retry cover recoverable failures. Rate-limit feedback asks the visitor to wait. |
 | Back to Top overlapping the contact form on a narrow viewport | The control now sits in the footer’s normal document flow and uses native fragment navigation. |
 | Keeping small screenshot labels legible while reducing transfer size | The queue screenshot retains its original dimensions in a smaller WebP, verified with a side-by-side visual comparison. |
-| Preserving content when motion is reduced or scripts are unavailable | Native links and disclosures are available in HTML. Reveal animations start from visible content and honor the reduced-motion setting. The contact demo stays disabled if its validation script is unavailable. |
+| Preserving content when motion is reduced or scripts are unavailable | Native links and disclosures are available in HTML. Reveal animations start from visible content and honor the reduced-motion setting. The form stays disabled if its validation script is unavailable, and the direct email link remains usable. |
 
 ## Current limitations and future improvements
 
 - LinkedIn integration needs the public profile URL. Academic project case studies use the available screenshots and CV because the original project source files are unavailable.
-- The form validates locally. Email is the current means to send a message.
+- The form validates locally and requires a configured email handler to open its draft. Clipboard copying depends on browser support and permissions.
 - The dashboard depends on live GitHub access and unauthenticated API limits. The language chart describes primary-language repository counts.
 - The production URL, formal HTML validation, fresh Lighthouse audits, and the manual browser and accessibility checks listed below remain pending. Use the official grading rubric to determine which verification and submission evidence is required.
 
@@ -133,6 +133,10 @@ The project has an always-visible wrapping navigation rather than a separate col
 ### Approved technical fixes
 
 On 2026-11-26, Codex reran the automated regression suite in headless Chrome and Edge. The former 320 × 568 px reproduction had zero overlap between the footer link and the email input. The link returned to the top and was available with JavaScript blocked. Chrome also held a mocked API request for the full ten-second timeout and verified the retry restored the dashboard and all cards without duplication. Both browsers passed pagination, rate-limit and network cases, the WebP asset response, and layout and interaction regressions. Targeted HTML checks passed for nesting, duplicate attributes and IDs, label and ARIA references, image attributes, internal links, and exact-case asset paths. JavaScript syntax and Git diff checks passed. A formal HTML validator, live GitHub and LinkedIn checks, manual cross-browser and device testing, student verification, and current Lighthouse audits remain pending.
+
+### Contact redesign verification
+
+On 2026-11-26, headless Chrome passed form validation, focus and correction, mobile and tablet layout checks, and clipboard success, expiration, and permission fallback using a clipboard stub. A Node check captured the mailto URL and verified the recipient, subject, reserved-character and newline encoding, and preservation of field values. The browser suite also passed project, theme, scroll, and mocked GitHub regression checks. Actual system clipboard contents and email-client behavior remain pending manual verification.
 
 ### Inherited Assignment 3 results
 

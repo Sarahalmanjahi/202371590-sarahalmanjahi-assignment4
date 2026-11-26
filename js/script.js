@@ -292,9 +292,30 @@ githubRetry.addEventListener("click", () => {
 });
 loadGitHubRepositories();
 
-/* Contact Form Validation */
+/* Contact and Email Drafts */
+const contactMailto = document.getElementById("send-email").getAttribute("href");
+const copyEmail = document.getElementById("copy-email");
+const copyEmailStatus = document.getElementById("copy-email-status");
 const contactForm = document.getElementById("contact-form");
 const formFeedback = document.getElementById("form-feedback");
+let copyFeedbackTimer;
+
+copyEmail.addEventListener("click", async () => {
+  clearTimeout(copyFeedbackTimer);
+  copyEmailStatus.textContent = "";
+
+  try {
+    await navigator.clipboard.writeText(contactMailto.slice("mailto:".length));
+    copyEmailStatus.textContent = "Email copied!";
+    copyFeedbackTimer = setTimeout(() => {
+      copyEmailStatus.textContent = "";
+    }, 3000);
+  } catch {
+    copyEmailStatus.textContent = "Clipboard access is unavailable. Select the email address above to copy it manually.";
+  }
+});
+
+copyEmail.hidden = false;
 
 const contactFields = [
   {
@@ -348,9 +369,14 @@ contactForm.addEventListener("submit", (event) => {
     return;
   }
 
-  contactForm.reset();
-  formFeedback.textContent = "Validation passed. Use the email link to send a message.";
+  const { name, email, message } = contactForm.elements;
+  const subject = encodeURIComponent("Portfolio inquiry");
+  const body = encodeURIComponent(
+    `Name: ${name.value.trim()}\r\nEmail: ${email.value.trim()}\r\n\r\n${message.value.trim().replace(/\r?\n/g, "\r\n")}`
+  );
+  formFeedback.textContent = "Your draft is ready. Review and send it in your email app.";
   formFeedback.className = "success";
+  window.location.href = `${contactMailto}?subject=${subject}&body=${body}`;
 });
 
 contactForm.addEventListener("input", (event) => {
