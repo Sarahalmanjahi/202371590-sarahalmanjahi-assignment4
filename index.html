@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sarah's software engineering portfolio featuring development and design projects.">
+
+  <title>Sarah Almanjahi | Portfolio</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Sarah Almanjahi</h1>
+
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button
+      type="button"
+      id="theme-toggle"
+      aria-label="Dark mode"
+      aria-pressed="false"
+      title="Switch to dark mode"
+    >
+      <svg
+        id="theme-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M20.985 12.486A9 9 0 0 1 11.514 3.015a9 9 0 1 0 9.47 9.47Z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <h2>Hi, I'm Sarah! 👋</h2>
+
+      <p class="tagline">
+        Software Engineering Student | Building practical solutions
+        through technology
+      </p>
+
+      <p id="greeting"></p>
+
+      <p class="about-description">
+        I'm a Software Engineering student at KFUPM,
+        passionate about developing practical,
+        user-friendly software solutions.
+      </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <!-- Project Filter Buttons -->
+      <div class="project-filters" role="group" aria-label="Filter projects">
+        <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">
+          All
+        </button>
+
+        <button type="button" class="filter-btn" data-filter="development" aria-pressed="false">
+          Development
+        </button>
+
+        <button type="button" class="filter-btn" data-filter="design" aria-pressed="false">
+          Design
+        </button>
+      </div>
+
+      <div class="project-sort-control">
+        <label for="project-sort">Sort by</label>
+        <select id="project-sort">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="name" selected>Name A–Z</option>
+        </select>
+      </div>
+
+      <p id="project-count" role="status"></p>
+
+      <div id="projects-list">
+        <article data-category="development" data-date="2024-12-15">
+          <img
+            src="assets/images/javafx-game.jpg"
+            alt="JavaFX Game project"
+            width="1280"
+            height="744"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <h3>JavaFX Game</h3>
+
+          <p>
+            A Java desktop game developed using JavaFX.
+            The project helped me practice object-oriented programming,
+            user interface design, and event handling.
+          </p>
+
+          <div class="project-tech">
+            <span>Java</span>
+            <span>JavaFX</span>
+            <span>OOP</span>
+            <span>Event Handling</span>
+          </div>
+        </article>
+
+        <article data-category="design" data-date="2025-11-30">
+          <img
+            src="assets/images/queue-system.png"
+            alt="Smart Queue Management System project"
+            width="638"
+            height="1204"
+            loading="lazy"
+            decoding="async"
+          >
+
+          <h3>Smart Queue Management System</h3>
+
+          <p>
+            Designed a Smart Queue Management System using Figma,
+            focusing on UI/UX design and interactive prototyping.
+            The project aimed to improve the waiting experience
+            through an intuitive and user-friendly interface.
+          </p>
+          <div class="project-tech">
+            <span>Figma</span>
+            <span>UI/UX Design</span>
+            <span>Prototyping</span>
+          </div>
+        </article>
+      </div>
+
+      <p id="projects-empty" role="status" hidden>
+        No projects found in this category.
+      </p>
+    </section>
+
+    <!-- GitHub Repositories Section -->
+    <section id="github-repositories">
+      <h2>GitHub Repositories</h2>
+      <p id="github-repositories-status" role="status"></p>
+      <div id="github-repositories-list"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+
+      <form id="contact-form" novalidate>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+
+        <!-- Validation Feedback -->
+        <p id="form-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Sarah Almanjahi</p>
+  </footer>
+</body>
+</html>

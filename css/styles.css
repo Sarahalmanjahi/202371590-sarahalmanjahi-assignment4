@@ -1,0 +1,362 @@
+/* General Styles */
+:root {
+  color-scheme: light;
+  --page-bg: #f5f5f5;
+  --text: #222;
+  --muted-text: #666;
+  --pink-bg: #f3c6d3;
+  --pink-text: #2f2f2f;
+  --pink-hover: #e8b5c4;
+  --pink-active: #d98eaa;
+  --card-bg: #fff;
+  --field-bg: #fff;
+  --field-border: #767676;
+  --focus: #a54b76;
+  --link: #0000ee;
+  --visited-link: #551a8b;
+  --success-bg: #e6f4ea;
+  --success-text: #236b35;
+  --error-bg: #fde8e8;
+  --error-text: #a12b2b;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #211a20;
+  --text: #f8edf2;
+  --muted-text: #d6bfc9;
+  --pink-bg: #522d43;
+  --pink-text: #fff0f6;
+  --pink-hover: #69405a;
+  --pink-active: #864964;
+  --card-bg: #30232d;
+  --field-bg: #271d25;
+  --field-border: #ac8499;
+  --focus: #ffafd0;
+  --link: #ffb8d4;
+  --visited-link: #e9b9fa;
+  --success-bg: #203a2b;
+  --success-text: #b7efc8;
+  --error-bg: #482830;
+  --error-text: #ffc5cf;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--page-bg);
+  color: var(--text);
+}
+
+/* Header and Navigation */
+header,
+footer {
+  background-color: var(--pink-bg);
+  color: var(--pink-text);
+  text-align: center;
+}
+
+header {
+  padding: 20px;
+}
+
+header h1 {
+  margin-bottom: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  color: var(--pink-text);
+  text-decoration: none;
+}
+
+#theme-toggle {
+  margin-top: 12px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--pink-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-toggle:hover {
+  background-color: var(--pink-hover);
+}
+
+#theme-icon {
+  width: 22px;
+  height: 22px;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  text-decoration: underline;
+}
+
+/* Main Content */
+main {
+  max-width: 1000px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+section h2 {
+  margin-bottom: 15px;
+}
+
+/* About Section */
+#about h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.tagline {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--focus);
+  margin-bottom: 16px;
+}
+
+.about-description {
+  font-size: 17px;
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+#greeting {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 700px) {
+  #about h2 {
+    font-size: 26px;
+  }
+
+  .tagline {
+    font-size: 18px;
+  }
+
+  .about-description {
+    font-size: 16px;
+  }
+}
+
+/* Projects Section */
+#projects-list,
+#github-repositories-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Project Filter Buttons */
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  padding: 10px 18px;
+}
+
+.project-sort-control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#project-sort {
+  padding: 8px;
+  font: inherit;
+}
+
+.filter-btn[aria-pressed="true"] {
+  background-color: var(--pink-active);
+  font-weight: bold;
+}
+
+#projects-list article[hidden] {
+  display: none;
+}
+
+#projects-empty {
+  margin-top: 15px;
+  color: var(--muted-text);
+}
+
+/* Project Cards */
+article {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-width: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+article img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+article a {
+  color: var(--link);
+}
+
+article a:visited {
+  color: var(--visited-link);
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.project-tech span {
+  background-color: #e7c8d3;
+  color: #29252b;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input,
+textarea,
+select {
+  background-color: var(--field-bg);
+  color: var(--text);
+  border: 1px solid var(--field-border);
+  border-radius: 5px;
+}
+
+input,
+textarea {
+  padding: 10px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--pink-bg);
+  color: var(--pink-text);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--pink-hover);
+}
+
+/* Keyboard Accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Contact Form Feedback */
+#form-feedback:not(:empty) {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#form-feedback.success {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+}
+
+#form-feedback.error {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+}
+
+/* Footer */
+footer {
+  padding: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+  nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #projects-list,
+  #github-repositories-list {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    margin: 15px auto;
+    padding: 15px;
+  }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  article,
+  button {
+    transition: none;
+  }
+
+  article:hover {
+    transform: none;
+  }
+}
