@@ -1,10 +1,12 @@
-# Assignment 3 Technical Documentation
+# Assignment 4 Technical Documentation
 
 **Sarah Almanjahi · 202371590 · SWE 363 – Web Engineering**
 
+Assignment 4 begins with the static portfolio developed in Assignments 2 and 3. This document describes the inherited implementation and will be updated as technical changes are completed.
+
 ## Architecture
 
-The portfolio is a static page. HTML defines the landmark sections, controls, and project cards. One stylesheet controls presentation and a deferred JavaScript file wires up the document after parsing. GitHub is the only external data source. Form input stays in the browser.
+The portfolio is a static page. HTML defines the landmark sections, controls, and project cards. One stylesheet controls presentation and a deferred JavaScript file wires up the document after parsing. GitHub is the only external data source. Form input stays in the browser. The site uses HTML, CSS, and vanilla JavaScript with no build pipeline or backend. The greeting uses the visitor's local hour on page load, changing from morning to afternoon at noon and from afternoon to evening at 18:00.
 
 ## GitHub API integration
 
@@ -28,13 +30,23 @@ The form prevents default submission. Validation trims all fields, checks for mi
 
 ## Responsive design, performance, and accessibility
 
-The project and repository grids use two columns above 700 px and one column at smaller widths. The header navigation stacks on narrow screens and controls and technology badges can wrap. Both original project images have explicit intrinsic dimensions, lazy loading, asynchronous decoding, and a fixed 200 px display box with `object-fit: contain`. The JavaFX JPEG is 1280 × 744 at 38,726 bytes. The queue PNG is 638 × 1204 at 295,710 bytes and is the better candidate for a smaller WebP after comparing legibility.
+The project and repository grids use two columns above 700 px and one column at smaller widths. The header navigation stacks on narrow screens and controls and technology badges can wrap. Both original project images have explicit intrinsic dimensions, lazy loading, asynchronous decoding, and a fixed 200 px display box with `object-fit: contain`. The JavaFX JPEG is 1280 × 744 at 38,726 bytes. The queue PNG is 638 × 1204 at 295,710 bytes.
 
 Semantic headings and landmarks, native controls, visible focus, image alternatives, live status messages, and reduced-motion styling support accessibility. The filter container has a group role and an accessible name. The theme icon is decorative because the button itself provides an accessible name. The accessible name of each repository link starts with its visible text and adds the repository name.
 
+## Compatibility and deployment
+
+The implementation targets modern browsers with Fetch, async functions, CSS Grid, and CSS custom properties. Theme switching works on the current page when storage is unavailable. Repository loading requires network access to GitHub. Serve the repository root over HTTP for local development or deploy it to a static host with the same folder structure. The Assignment 4 deployment URL is pending confirmation.
+
 ## Verification record
 
-Checks performed on 2026-11-21 by Codex.
+### Assignment 4
+
+On 2026-11-26, Codex reviewed the source and ran a JavaScript syntax check and documentation checks. Assignment 4 browser walkthroughs, live API verification, Lighthouse, cross-browser testing, and assistive-technology checks are pending. Student verification is pending confirmation.
+
+### Inherited Assignment 3 results
+
+The following checks were performed by Codex on 2026-11-21 during Assignment 3.
 
 | Check | Result |
 |---|---|
@@ -56,4 +68,4 @@ Lighthouse 13.6.0 audited the local HTTP site on 2026-11-21 after the repository
 | Mobile | 100/100 | 100/100 | 0.99 s | 0.036 |
 | Desktop | 100/100 | 100/100 | 0.57 s | 0.021 |
 
-The label-content-name check passed in both final runs. Manual visual and keyboard walkthroughs, cross-browser testing, and assistive-technology checks remain pending. For the audit procedure, see [Testing in the README](../README.md#testing).
+The label-content-name check passed in both final runs. For an Assignment 4 walkthrough, see [Testing in the README](../README.md#testing).

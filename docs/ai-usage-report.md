@@ -1,52 +1,42 @@
-# AI Usage Report
+# Assignment 4 AI Usage Report
 
-**Course:** SWE 363 – Web Engineering<br>
-**Assignment:** Assignment 3 – Advanced Functionality<br>
+**Course:** SWE 363 - Web Engineering<br>
 **Student:** Sarah Almanjahi<br>
 **Student ID:** 202371590
 
 ## Tools Used & Use Cases
 
-OpenAI Codex (GPT-6) reviewed the Assignment 2 baseline, implemented Assignment 3 features in stages, assisted with performance and verification, and updated the documentation. The [Assignment 2 AI report](ai-usage-report-assignment2.md) preserves the earlier record.
-
-## Benefits & Challenges
-
-Codex helped compare the baseline with the rubric, build on existing code, and check API failure paths with controlled responses. The live API depends on network access and rate limits. Simulated responses allow repeatable checks but cannot establish how a live request performs. Git history records the repository changes, and Sarah confirmed which edits she made manually and which features she tested herself.
-
-## Learning Outcomes
-
-The implementation provides material for Sarah to explain API pagination and failure handling, combined filtering and sorting, localStorage fallback behavior, and how deferred scripts and image loading affect the page. Personal learning outcomes and reflections: **To be confirmed by student**.
-
-## Responsible Use & Modifications
-
-The log distinguishes Codex output from Sarah’s manual changes and personal testing. Sarah confirmed that she rewrote and restyled About Me (`5dfc1d2`, `0b7840f`), replaced the theme button text with sun and moon icons and styled the control (`c092354`), and updated project descriptions and added technology badges with their own styling (`8bdd5ea`). She also adjusted the site’s overall appearance through these styling changes and supplied the project completion dates. The Git history separately records her repository-description fallback change (`100403c`).
-
-Sarah personally reviewed the layout and appearance and tested switching between light and dark modes, project filtering and sorting, GitHub repository loading, and contact form validation. Codex’s automated checks are recorded separately.
+OpenAI Codex (GPT-6) reviewed the portfolio developed in Assignments 2 and 3 and drafted the Assignment 4 documentation. This log begins with the Assignment 4 review on 2026-11-26. The previous AI report is preserved in Git at the Assignment 4 baseline commit `28ea7d4`.
 
 ## AI Usage Log
 
-| ID | Tool (model) | Date | Purpose | Files affected | What you changed and how you verified it |
+Add an entry immediately after each AI-assisted task or modification. Record the exact tool and model, date, purpose, files affected, AI-generated output, student modifications, and verification. Record pending items until the student confirms them.
+
+| ID | Tool (model) | Date | Purpose | Files affected | Student modifications and verification |
 |---|---|---|---|---|---|
-| C01 | OpenAI Codex (GPT-6) | 2026-11-21 | Baseline review and evidence setup | `docs/ai-usage-report.md`, `docs/ai-usage-report-assignment2.md`, `.gitignore` | **AI output:** Drafted the report, archived Assignment 2, and added ignore rules. **Student changes:** Sarah’s commit `404729a` includes a completed declaration date and signature where Codex left blanks. **Personal verification:** To be confirmed by student. |
-| C02 | OpenAI Codex (GPT-6) | 2026-11-21 | GitHub REST API integration | `index.html`, `css/styles.css`, `js/script.js`, `docs/ai-usage-report.md` | **AI output:** Generated a responsive repository section, paginated unauthenticated fetch, and loading, error, and empty states. **Student changes:** Sarah’s commit `100403c` substituted a portfolio-specific missing-description fallback. C07 retained her wording for Assignment 3 and restored a generic fallback for other repositories. **Personal verification:** Sarah personally tested GitHub repository loading. |
-| C03 | OpenAI Codex (GPT-6) | 2026-11-21 | Combined category filtering and sorting | `index.html`, `css/styles.css`, `js/script.js`, `docs/ai-usage-report.md` | **AI output:** Generated the sort control, shared update function, and completion-date metadata. **Student contribution:** Sarah supplied 2024-12-15 for JavaFX Game and 2025-11-30 for Smart Queue Management System. Codex entered the dates and enabled chronological sorting. Direct manual code modifications: To be confirmed by student. **Personal verification:** Sarah personally tested project filtering and sorting. |
-| C04 | OpenAI Codex (GPT-6) | 2026-11-21 | Persistent light and dark themes | `index.html`, `css/styles.css`, `js/script.js`, `docs/ai-usage-report.md` | **AI output:** Generated a text toggle, CSS palettes, and localStorage logic. **Student changes:** Sarah’s commit `c092354` replaced the text with sun and moon icons, styled the icon button, and updated its tooltip and accessible label. C07 kept her icons and tooltip, with a stable accessible name and a separate pressed state. **Personal verification:** Sarah personally tested switching between light and dark modes. |
-| C05 | OpenAI Codex (GPT-6) | 2026-11-21 | Contact validation and feedback | `js/script.js`, `docs/ai-usage-report.md` | **AI output:** Added trimmed minimum lengths, field-specific feedback, and feedback updates during correction. **Student modifications:** To be confirmed by student. **Personal verification:** Sarah personally tested contact form validation. |
-| C06 | OpenAI Codex (GPT-6) | 2026-11-21 | Performance review and optimization | `index.html`, `css/styles.css`, `js/script.js`, `docs/ai-usage-report.md` | **AI output:** Deferred script execution, supplied measured image dimensions, retained lazy loading, added asynchronous decoding, consolidated CSS, and reduced unnecessary project DOM writes. **Student modifications:** To be confirmed by student. **Personal verification:** Sarah personally reviewed the overall layout and appearance. |
-| C07 | OpenAI Codex (GPT-6) | 2026-11-21 | Final rubric review, corrections, verification, and documentation | `index.html`, `css/styles.css`, `js/script.js`, `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Reviewed code and Git history, corrected the fallback and accessible toggle name, named the filter group, matched GitHub link names to their visible text, cleaned formatting, ran headless Chrome and Lighthouse, and updated the documentation. **Student changes reviewed:** Sarah manually revised the About Me and project descriptions, styled the About Me section and theme control, added the sun and moon icons, and created and styled the project badges. These edits predate the C07 review. **Personal verification:** Sarah personally tested theme switching, project filtering and sorting, GitHub repository loading, and contact form validation. She also reviewed the overall layout and appearance. |
-| C08 | OpenAI Codex (GPT-6) | 2026-11-21 | Record confirmed manual contributions and testing | `docs/ai-usage-report.md` | **AI output:** Updated the report using Sarah’s confirmation and the Git history. **Student contribution:** Sarah identified her manual design and content edits and reported the website checks she performed. **Personal verification:** The reported checks are recorded in the relevant feature entries. |
+| A4-01 | OpenAI Codex (GPT-6) | 2026-11-26 | Review the inherited portfolio and prepare Assignment 4 documentation | `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Reviewed the inherited source, drafted the Assignment 4 README and this report, and updated the technical reference with the inherited implementation and historical checks. **AI verification:** JavaScript syntax, local documentation links, and documentation-only diff checked. **Student modifications:** Pending confirmation. **Student verification:** Pending confirmation. |
 
-Codex’s verification results are recorded in the [technical documentation](technical-documentation.md#verification-record). Reconcile this log with the exported evidence before submission and record any additional conversations or standalone AI-generated artifacts.
+## Benefits & Challenges
 
-## AI Evidence and Commit Attribution
+Codex used the source to reconcile the user guide and technical description and identify which verification results belong to Assignment 3. Assignment 4 browser behavior and live deployment still need verification. Student assessment of benefits and challenges is pending.
 
-Submit `202371590-SarahAlmanjahi-assignment3-ai-evidence.zip` separately through Blackboard. Include complete, unedited AI conversations in `conversations/` and intermediate AI-generated artifacts in `artifacts/`. Keep both folders and the ZIP out of public Git history. Credit the actual tool and model on AI-assisted commits using `Assisted-by: OpenAI Codex (GPT-6)` for this work.
+## Learning Outcomes
 
-## AI Usage Declaration
+Topics for the student's reflection include tracing features from HTML controls through JavaScript to visible feedback, identifying which features depend on browser storage or the network, and distinguishing source review from runtime verification. Personal learning outcomes are pending student confirmation.
+
+## Responsible Use & Modifications
+
+The log identifies AI-generated changes separately from the student's own edits and checks. Student modifications and personal testing for Assignment 4 are pending confirmation. Update the log when the student reports what she changed, why she changed it, and how she verified it.
+
+Save complete, unedited AI conversations and original AI-generated artifacts **before making personal modifications**. Keep evidence private and reconcile it with the log before submission. The existing ignore rules cover the root `conversations/` and `artifacts/` folders and the Assignment 3 archive. Store any Assignment 4 evidence ZIP outside the repository and confirm its submission format with the assignment instructions.
+
+For AI-assisted commits, use a descriptive subject and credit the actual tool and model. Suggested subject for this update is `Prepare Assignment 4 portfolio documentation`, with the trailer `Assisted-by: OpenAI Codex (GPT-6)`.
+
+## AI Usage Declaration (Draft)
 
 I declare that this report and the attached evidence document all of my AI use in this assignment, with complete and unedited conversations, and that I understand and can explain all the code I submitted. I understand that undeclared AI use or a false declaration will be treated as plagiarism according to KFUPM regulations.
 
 **Full Name:** Sarah Almanjahi<br>
 **Student ID:** 202371590<br>
-**Date:** 11/21/2026<br>
-**Signature:** SarahS.
+**Date:** Pending student completion<br>
+**Signature:** Pending student completion
