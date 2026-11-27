@@ -103,5 +103,5 @@ I declare that this report and the attached evidence document all of my AI use i
 
 **Full Name:** Sarah Almanjahi<br>
 **Student ID:** 202371590<br>
-**Date:** 2026-11-26 (draft date, pending student confirmation)<br>
-**Signature:** Pending student completion
+**Date:** 2026-11-26 <br>
+**Signature:** Sarah.S
