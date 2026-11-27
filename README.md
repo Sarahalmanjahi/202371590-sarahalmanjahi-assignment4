@@ -63,7 +63,7 @@ For a browser walkthrough, start with Tab and activate **Skip to content**. Use 
 
 ## Deployment
 
-The live Assignment 4 URL is pending. The site can be served from a static host by publishing the project root with its relative asset paths intact. After deployment, verify the public page, **View CV**, and the live GitHub dashboard, then add the URL here.
+The Assignment 4 portfolio is published on GitHub Pages. [Visit the live portfolio](https://sarahalmanjahi.github.io/202371590-sarahalmanjahi-assignment4/).
 
 ## AI usage
 
