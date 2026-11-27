@@ -6,6 +6,8 @@
 
 ## Tools Used & Use Cases
 
+Sarah reported using ChatGPT to create the Assignment 4 presentation slides. The model, original conversation date, and any subsequent manual slide edits have yet to be confirmed.
+
 OpenAI Codex (GPT-6) assisted with source review, implementation planning, HTML/CSS/JavaScript changes, debugging, and documentation. It also used local Node.js, Git, and headless Chrome and Edge for deterministic checks, and generated a WebP comparison and browser verification scripts. These supporting tools did not generate AI responses. This log begins with the Assignment 4 review on 2026-11-26. The prior report is preserved at baseline commit `28ea7d4`.
 
 ## AI Usage Log
@@ -57,6 +59,11 @@ Add an entry immediately after each AI-assisted task or modification. Use C01, C
 | C18 | OpenAI Codex (GPT-6) | 2026-11-26 | Audit the portfolio against the supplied rubric criteria | None | **AI output:** Reviewed the repository, source, documentation, and evidence references. Ran local headless Chrome regression checks with mocked GitHub data and clipboard behavior. Reported provisional marks for the visible criteria. |
 | C19 | OpenAI Codex (GPT-6) | 2026-11-26 | Resolve the approved portfolio audit findings | `.gitignore`, `index.html`, `css/styles.css`, `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | **AI output:** Implemented A24, clarified historical verification notes, and updated documentation. **AI verification:** Headless Chrome, Node syntax, Git diff, and evidence ignore checks passed. Student verification of these follow-up changes is pending. |
 | A24 | OpenAI Codex (GPT-6) | 2026-11-26 | Portfolio follow-up changes generated in C19 | `.gitignore`, `index.html`, `css/styles.css` | **AI output:** Added the Quick Facts heading, corrected flex alignment and indentation, limited skill-card transitions to no-preference motion, and ignored matching Assignment 4 evidence ZIPs. Earlier student modifications are recorded separately. |
+| C20 | OpenAI Codex (GPT-6) | 2026-11-26 | Export the portfolio development conversation as a PDF | `conversations/assignment-4-full-chat.pdf` | **AI-assisted work:** Exported the conversation with its pasted attachment and rubric screenshots. See A25. |
+| A25 | OpenAI Codex (GPT-6) | 2026-11-26 | Conversation PDF generated in C20 | `conversations/assignment-4-full-chat.pdf` | **Artifact:** A 46-page export saved in the Git-ignored evidence folder. It covers the portfolio conversation through the export request. |
+| C21 | ChatGPT (model unconfirmed) | Reported 2026-11-27 | Create the Assignment 4 presentation slides | `presentation/slides.pdf` | **Student disclosure:** Sarah reported using ChatGPT to create the presentation. **Verification:** The slide PDF exists locally. The original ChatGPT conversation, model, session date, and scope of any manual slide edits are pending confirmation. |
+| A26 | ChatGPT (model unconfirmed) | Reported 2026-11-27 | Presentation slides associated with C21 | `presentation/slides.pdf` | **AI assistance:** Student-reported ChatGPT-assisted slide creation. The accompanying video is present locally. The scope of AI assistance for the video has yet to be confirmed. |
+| C22 | OpenAI Codex (GPT-6) | 2026-11-27 | Record the presentation AI disclosure | `docs/ai-usage-report.md` | **AI output:** Recorded the student’s disclosure and checked that the slide PDF and video files exist locally. |
 
 ## Benefits & Challenges
 
